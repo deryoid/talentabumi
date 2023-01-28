@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Waktu pembuatan: 21 Jan 2023 pada 11.38
+-- Waktu pembuatan: 28 Jan 2023 pada 06.02
 -- Versi server: 5.7.34
 -- Versi PHP: 7.4.21
 
@@ -136,17 +136,17 @@ INSERT INTO `pi` (`id_pi`, `tanggal_permintaan`, `no_pi`, `keterangan`) VALUES
 
 CREATE TABLE `rekap_harian` (
   `id_rh` int(11) NOT NULL,
-  `lokasi_rh` varchar(50) NOT NULL,
-  `tanggal_pembuatan` date NOT NULL,
-  `departemen_rh` varchar(40) NOT NULL,
-  `id_pi` int(11) NOT NULL,
-  `id_pb` int(11) NOT NULL,
-  `id_fppk` int(11) NOT NULL,
-  `no_pp` varchar(20) NOT NULL,
-  `id_fppp` int(11) NOT NULL,
-  `nama_kebutuhan` varchar(40) NOT NULL,
-  `rp` varchar(50) NOT NULL,
-  `keterangan_rh` text NOT NULL
+  `lokasi_rh` varchar(50) DEFAULT NULL,
+  `tanggal_pembuatan` date DEFAULT NULL,
+  `departemen_rh` varchar(40) DEFAULT NULL,
+  `id_pi` int(11) DEFAULT NULL,
+  `id_pb` int(11) DEFAULT NULL,
+  `id_fppk` int(11) DEFAULT NULL,
+  `no_pp` varchar(20) DEFAULT NULL,
+  `id_fppp` int(11) DEFAULT NULL,
+  `nama_kebutuhan` varchar(40) DEFAULT NULL,
+  `rp` varchar(50) DEFAULT NULL,
+  `keterangan_rh` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -155,7 +155,8 @@ CREATE TABLE `rekap_harian` (
 
 INSERT INTO `rekap_harian` (`id_rh`, `lokasi_rh`, `tanggal_pembuatan`, `departemen_rh`, `id_pi`, `id_pb`, `id_fppk`, `no_pp`, `id_fppp`, `nama_kebutuhan`, `rp`, `keterangan_rh`) VALUES
 (2, 'LIANG ANGGANG', '2022-12-15', '123', 1, 1, 1, '004', 1, 'Barang', '200000', '123'),
-(3, 'LIANG ANGGANG', '2023-01-21', '1', 1, 1, 1, '1', 1, '2', '200000', '2');
+(3, 'LIANG ANGGANG', '2023-01-21', '1', 1, 1, 1, '1', 1, '2', '200000', '2'),
+(4, 'MARABAHAN', '2023-01-28', '123', 0, 0, 0, '', 0, 'Barang', '200000', '123');
 
 -- --------------------------------------------------------
 
@@ -263,7 +264,7 @@ ALTER TABLE `pi`
 -- AUTO_INCREMENT untuk tabel `rekap_harian`
 --
 ALTER TABLE `rekap_harian`
-  MODIFY `id_rh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_rh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
