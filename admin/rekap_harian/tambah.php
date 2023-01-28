@@ -63,7 +63,7 @@ include '../../templates/head.php';
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Lokasi</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control" data-placeholder="Pilih" name="lokasi_rh" required="">
+                                                <select class="form-control" data-placeholder="Pilih" name="lokasi_rh">
                                                     <option value="">-Pilih-</option>
                                                     <option value="MARABAHAN">MARABAHAN</option>
                                                     <option value="LIANG ANGGANG">LIANG ANGGANG</option>
@@ -73,61 +73,97 @@ include '../../templates/head.php';
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Tanggal Pembuatan</label>
                                             <div class="col-sm-10">
-                                                <input type="date" class="form-control" name="tanggal_pembuatan" required="">
+                                                <input type="date" class="form-control" name="tanggal_pembuatan">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Departemen</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="departemen" required="">
+                                                <input type="text" class="form-control" name="departemen_rh">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No PI</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="no_pi" required="">
+                                                <select class="form control select2" name="id_pi" data-placeholder="Pilih" style="width: 100%;">
+                                                    <option value="0"></option>
+                                                    <?php
+                                                    $k = $koneksi->query("SELECT * FROM pi");
+                                                    foreach ($k as $item) {
+                                                    ?>
+                                                        <option value="<?= $item['id_pi'] ?>"><?= $item['no_pi'] ?></option>
+
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No PB</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="no_pb" required="">
+                                                <select class="form control select2" name="id_pb" data-placeholder="Pilih" style="width: 100%;">
+                                                    <option value="0"></option>
+                                                    <?php
+                                                    $k = $koneksi->query("SELECT * FROM pb");
+                                                    foreach ($k as $item) {
+                                                    ?>
+                                                        <option value="<?= $item['id_pb'] ?>"><?= $item['no_pb'] ?></option>
+
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No FPPK</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="no_fppk" required="">
+                                                <select class="form control select2" name="id_fppk" data-placeholder="Pilih" style="width: 100%;">
+                                                    <option value="0"></option>
+                                                    <?php
+                                                    $k = $koneksi->query("SELECT * FROM fppk");
+                                                    foreach ($k as $item) {
+                                                    ?>
+                                                        <option value="<?= $item['id_fppk'] ?>"><?= $item['no_fppk'] ?></option>
+
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No PP</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="no_pp" required="">
+                                                <input type="text" class="form-control" name="no_pp">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No FPPP</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="no_fppp" required="">
+                                                <select class="form control select2" name="id_fppp" data-placeholder="Pilih" style="width: 100%;">
+                                                    <option value="0"></option>
+                                                    <?php
+                                                    $k = $koneksi->query("SELECT * FROM fppp");
+                                                    foreach ($k as $item) {
+                                                    ?>
+                                                        <option value="<?= $item['id_fppp'] ?>"><?= $item['no_fppp'] ?></option>
+
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Nama Kebutuhan</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="nama_kebutuhan" required="">
+                                                <input type="text" class="form-control" name="nama_kebutuhan">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">RP.</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="rp" required="">
+                                                <input type="number" class="form-control" name="rp">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Keterangan</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="keterangan" required="">
+                                                <input type="text" class="form-control" name="keterangan_rh">
                                             </div>
                                         </div>
 
@@ -173,29 +209,29 @@ include '../../templates/head.php';
     if (isset($_POST['submit'])) {
         $lokasi_rh = $_POST['lokasi_rh'];
         $tanggal_pembuatan = $_POST['tanggal_pembuatan'];
-        $departemen = $_POST['departemen'];
-        $no_pi = $_POST['no_pi'];
-        $no_pb = $_POST['no_pb'];
-        $no_fppk = $_POST['no_fppk'];
+        $departemen_rh = $_POST['departemen_rh'];
+        $id_pi = $_POST['id_pi'];
+        $id_pb = $_POST['id_pb'];
+        $id_fppk = $_POST['id_fppk'];
         $no_pp = $_POST['no_pp'];
-        $no_fppp = $_POST['no_fppp'];
+        $id_fppp = $_POST['id_fppp'];
         $nama_kebutuhan = $_POST['nama_kebutuhan'];
         $rp = $_POST['rp'];
-        $keterangan = $_POST['keterangan'];
+        $keterangan_rh = $_POST['keterangan_rh'];
 
         $submit = $koneksi->query("INSERT INTO rekap_harian VALUES (
         NULL,
         '$lokasi_rh',
         '$tanggal_pembuatan',
-        '$departemen',
-        '$no_pi',
-        '$no_pb',
-        '$no_fppk',
+        '$departemen_rh',
+        '$id_pi',
+        '$id_pb',
+        '$id_fppk',
         '$no_pp',
-        '$no_fppp',
+        '$id_fppp',
         '$nama_kebutuhan',
         '$rp',
-        '$keterangan'
+        '$keterangan_rh'
         )");
         // var_dump($submit, $koneksi->error);
         // die();

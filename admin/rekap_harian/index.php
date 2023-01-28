@@ -88,14 +88,19 @@ include '../../templates/head.php';
                                             <tbody style="background-color: white">
                                                 <?php
                                                 $no = 1;
-                                                $data = $koneksi->query("SELECT * FROM rekap_harian ORDER BY id_rh ASC");
+                                                $data = $koneksi->query("SELECT * FROM rekap_harian AS rh
+                                                LEFT JOIN pi AS tpi ON rh.id_pi = tpi.id_pi
+                                                LEFT JOIN pb AS tpb ON rh.id_pb = tpb.id_pb
+                                                LEFT JOIN fppk AS tfppk ON rh.id_fppk = tfppk.id_fppk
+                                                LEFT JOIN fppp AS tfppp ON rh.id_fppp = tfppp.id_fppp
+                                                ORDER BY id_rh ASC");
                                                 while ($row = $data->fetch_array()) {
                                                 ?>
                                                     <tr>
                                                         <td align="center"><?= $no++ ?></td>
                                                         <td><?= $row['lokasi_rh'] ?></td>
                                                         <td><?= $row['tanggal_pembuatan'] ?></td>
-                                                        <td><?= $row['departemen'] ?></td>
+                                                        <td><?= $row['departemen_rh'] ?></td>
                                                         <td><?= $row['no_pi'] ?></td>
                                                         <td><?= $row['no_pb'] ?></td>
                                                         <td><?= $row['no_fppk'] ?></td>
@@ -103,7 +108,7 @@ include '../../templates/head.php';
                                                         <td><?= $row['no_fppp'] ?></td>
                                                         <td><?= $row['nama_kebutuhan'] ?></td>
                                                         <td><?= $row['rp'] ?></td>
-                                                        <td><?= $row['keterangan'] ?></td>
+                                                        <td><?= $row['keterangan_rh'] ?></td>
                                                         <td align="center">
                                                             <a href="edit?id=<?= $row['id_rh'] ?>" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i> Edit</a>
                                                             <a href="hapus?id=<?= $row['id_rh'] ?>" class="btn btn-danger btn-sm alert-hapus" title="Hapus"><i class="fa fa-trash"></i> Hapus</a>

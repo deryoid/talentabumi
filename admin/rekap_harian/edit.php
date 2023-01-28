@@ -84,25 +84,49 @@ $row = $data->fetch_array();
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Departemen</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="departemen" value="<?= $row['departemen'] ?>">
+                                                <input type="text" class="form-control" name="departemen_rh" value="<?= $row['departemen_rh'] ?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No PI</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="no_pi" value="<?= $row['no_pi'] ?>">
+                                                <select class="form control select2" name="id_pi" id="id_pi" data-placeholder="Pilih" style="width: 100%;" required>
+                                                    <option value=""></option>
+                                                    <?php
+                                                    $sd = $koneksi->query("SELECT * FROM pi ORDER BY id_pi DESC");
+                                                    foreach ($sd as $item) {
+                                                    ?>
+                                                        <option value="<?= $item['id_pi'] ?>" <?= $row['id_pi'] == $item['id_pi'] ? 'selected' : '' ?>><?= $item['no_pi'] ?></option>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No PB</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="no_pb" value="<?= $row['no_pb'] ?>">
+                                                <select class="form control select2" name="id_pb" id="id_pb" data-placeholder="Pilih" style="width: 100%;" required>
+                                                    <option value=""></option>
+                                                    <?php
+                                                    $sd = $koneksi->query("SELECT * FROM pb ORDER BY id_pb DESC");
+                                                    foreach ($sd as $item) {
+                                                    ?>
+                                                        <option value="<?= $item['id_pb'] ?>" <?= $row['id_pb'] == $item['id_pb'] ? 'selected' : '' ?>><?= $item['no_pb'] ?></option>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No FPPK</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="no_fppk" value="<?= $row['no_fppk'] ?>">
+                                                <select class="form control select2" name="id_fppk" id="id_fppk" data-placeholder="Pilih" style="width: 100%;" required>
+                                                    <option value=""></option>
+                                                    <?php
+                                                    $sd = $koneksi->query("SELECT * FROM fppk ORDER BY id_fppk DESC");
+                                                    foreach ($sd as $item) {
+                                                    ?>
+                                                        <option value="<?= $item['id_fppk'] ?>" <?= $row['id_fppk'] == $item['id_fppk'] ? 'selected' : '' ?>><?= $item['no_fppk'] ?></option>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -114,7 +138,15 @@ $row = $data->fetch_array();
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No FPPP</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="no_fppp" value="<?= $row['no_fppp'] ?>">
+                                                <select class="form control select2" name="id_fppp" id="id_fppp" data-placeholder="Pilih" style="width: 100%;" required>
+                                                    <option value=""></option>
+                                                    <?php
+                                                    $sd = $koneksi->query("SELECT * FROM fppp ORDER BY id_fppp DESC");
+                                                    foreach ($sd as $item) {
+                                                    ?>
+                                                        <option value="<?= $item['id_fppp'] ?>" <?= $row['id_fppp'] == $item['id_fppp'] ? 'selected' : '' ?>><?= $item['no_fppp'] ?></option>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -126,13 +158,13 @@ $row = $data->fetch_array();
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">RP.</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="rp" value="<?= $row['rp'] ?>">
+                                                <input type="number" class="form-control" name="rp" value="<?= $row['rp'] ?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Keterangan</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="keterangan" value="<?= $row['keterangan'] ?>">
+                                                <input type="text" class="form-control" name="keterangan_rh" value="<?= $row['keterangan_rh'] ?>">
                                             </div>
                                         </div>
 
@@ -178,29 +210,29 @@ $row = $data->fetch_array();
     if (isset($_POST['submit'])) {
         $lokasi_rh = $_POST['lokasi_rh'];
         $tanggal_pembuatan = $_POST['tanggal_pembuatan'];
-        $departemen = $_POST['departemen'];
-        $no_pi = $_POST['no_pi'];
-        $no_pb = $_POST['no_pb'];
-        $no_fppk = $_POST['no_fppk'];
+        $departemen_rh = $_POST['departemen_rh'];
+        $id_pi = $_POST['id_pi'];
+        $id_pb = $_POST['id_pb'];
+        $id_fppk = $_POST['id_fppk'];
         $no_pp = $_POST['no_pp'];
-        $no_fppp = $_POST['no_fppp'];
+        $id_fppp = $_POST['id_fppp'];
         $nama_kebutuhan = $_POST['nama_kebutuhan'];
         $rp = $_POST['rp'];
-        $keterangan = $_POST['keterangan'];
+        $keterangan_rh = $_POST['keterangan_rh'];
 
 
         $submit = $koneksi->query("UPDATE rekap_harian SET 
         lokasi_rh = '$lokasi_rh',
         tanggal_pembuatan = '$tanggal_pembuatan',
-        departemen = '$departemen',
-        no_pi = '$no_pi',
-        no_pb = '$no_pb',
-        no_fppk = '$no_fppk',
+        departemen_rh = '$departemen_rh',
+        id_pi = '$id_pi',
+        id_pb = '$id_pb',
+        id_fppk = '$id_fppk',
         no_pp = '$no_pp',
-        no_fppp = '$no_fppp',
+        id_fppp = '$id_fppp',
         nama_kebutuhan = '$nama_kebutuhan',
         rp = '$rp',
-        keterangan = '$keterangan'
+        keterangan_rh = '$keterangan_rh'
         WHERE 
         id_rh = '$id'
         ");

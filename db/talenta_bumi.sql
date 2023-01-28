@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Waktu pembuatan: 15 Des 2022 pada 05.44
+-- Waktu pembuatan: 21 Jan 2023 pada 11.38
 -- Versi server: 5.7.34
 -- Versi PHP: 7.4.21
 
@@ -138,23 +138,24 @@ CREATE TABLE `rekap_harian` (
   `id_rh` int(11) NOT NULL,
   `lokasi_rh` varchar(50) NOT NULL,
   `tanggal_pembuatan` date NOT NULL,
-  `departemen` varchar(40) NOT NULL,
-  `no_pi` varchar(20) NOT NULL,
-  `no_pb` varchar(20) NOT NULL,
-  `no_fppk` varchar(20) NOT NULL,
+  `departemen_rh` varchar(40) NOT NULL,
+  `id_pi` int(11) NOT NULL,
+  `id_pb` int(11) NOT NULL,
+  `id_fppk` int(11) NOT NULL,
   `no_pp` varchar(20) NOT NULL,
-  `no_fppp` varchar(20) NOT NULL,
+  `id_fppp` int(11) NOT NULL,
   `nama_kebutuhan` varchar(40) NOT NULL,
   `rp` varchar(50) NOT NULL,
-  `keterangan` text NOT NULL
+  `keterangan_rh` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data untuk tabel `rekap_harian`
 --
 
-INSERT INTO `rekap_harian` (`id_rh`, `lokasi_rh`, `tanggal_pembuatan`, `departemen`, `no_pi`, `no_pb`, `no_fppk`, `no_pp`, `no_fppp`, `nama_kebutuhan`, `rp`, `keterangan`) VALUES
-(2, 'LIANG ANGGANG', '2022-12-15', 'HRGA', '001', '002', '003', '004', '005', 'Barang', 'Rp. 2.000.000', '-');
+INSERT INTO `rekap_harian` (`id_rh`, `lokasi_rh`, `tanggal_pembuatan`, `departemen_rh`, `id_pi`, `id_pb`, `id_fppk`, `no_pp`, `id_fppp`, `nama_kebutuhan`, `rp`, `keterangan_rh`) VALUES
+(2, 'LIANG ANGGANG', '2022-12-15', '123', 1, 1, 1, '004', 1, 'Barang', '200000', '123'),
+(3, 'LIANG ANGGANG', '2023-01-21', '1', 1, 1, 1, '1', 1, '2', '200000', '2');
 
 -- --------------------------------------------------------
 
@@ -238,31 +239,31 @@ ALTER TABLE `aktiva_tetap`
 -- AUTO_INCREMENT untuk tabel `fppk`
 --
 ALTER TABLE `fppk`
-  MODIFY `id_fppk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_fppk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `fppp`
 --
 ALTER TABLE `fppp`
-  MODIFY `id_fppp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_fppp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `pb`
 --
 ALTER TABLE `pb`
-  MODIFY `id_pb` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pb` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `pi`
 --
 ALTER TABLE `pi`
-  MODIFY `id_pi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `rekap_harian`
 --
 ALTER TABLE `rekap_harian`
-  MODIFY `id_rh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_rh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

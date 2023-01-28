@@ -72,24 +72,60 @@ if (isset($_POST['c1'])) {
                     <tbody style="background-color: white">
                         <?php
                         $no = 1;
-                        $data = $koneksi->query("SELECT * FROM rekap_harian WHERE lokasi_rh = '$lokasi_rh'");
+                        $data = $koneksi->query("SELECT * FROM rekap_harian AS rh
+                                                LEFT JOIN pi AS tpi ON rh.id_pi = tpi.id_pi
+                                                LEFT JOIN pb AS tpb ON rh.id_pb = tpb.id_pb
+                                                LEFT JOIN fppk AS tfppk ON rh.id_fppk = tfppk.id_fppk
+                                                LEFT JOIN fppp AS tfppp ON rh.id_fppp = tfppp.id_fppp
+                                                ORDER BY id_rh ASC");
                         while ($row = $data->fetch_array()) {
                         ?>
                             <tr>
                                 <td align="center"><?= $no++ ?></td>
                                 <td><?= $row['lokasi_rh'] ?></td>
                                 <td><?= $row['tanggal_pembuatan'] ?></td>
-                                <td><?= $row['departemen'] ?></td>
+                                <td><?= $row['departemen_rh'] ?></td>
                                 <td><?= $row['no_pi'] ?></td>
                                 <td><?= $row['no_pb'] ?></td>
                                 <td><?= $row['no_fppk'] ?></td>
                                 <td><?= $row['no_pp'] ?></td>
                                 <td><?= $row['no_fppp'] ?></td>
                                 <td><?= $row['nama_kebutuhan'] ?></td>
-                                <td><?= $row['rp'] ?></td>
-                                <td><?= $row['keterangan'] ?></td>
+                                <td>Rp.<?= $row['rp'] ?></td>
+                                <td><?= $row['keterangan_rh'] ?></td>
                             </tr>
                         <?php } ?>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>
+                                <?php
+                                $data = $koneksi->query("SELECT SUM(rp) AS total FROM rekap_harian AS rh
+                                  LEFT JOIN pi AS tpi ON rh.id_pi = tpi.id_pi
+                                  LEFT JOIN pb AS tpb ON rh.id_pb = tpb.id_pb
+                                  LEFT JOIN fppk AS tfppk ON rh.id_fppk = tfppk.id_fppk
+                                  LEFT JOIN fppp AS tfppp ON rh.id_fppp = tfppp.id_fppp
+                                  ORDER BY id_rh ASC")->fetch_array();
+
+                                ?>
+                                <b>
+                                    Total :
+                                </b>
+                            </th>
+                            <th>
+                                <b>Rp.<?= $data['total'] ?></b>
+                            </th>
+                            <th></th>
+                        </tr>
+
+
                     </tbody>
                 </table>
             </div>
