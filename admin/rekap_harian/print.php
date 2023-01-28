@@ -41,7 +41,7 @@ if (isset($_POST['c1'])) {
             <img src="<?= base_url('assets/dist/img/logo.jpeg') ?>" align="left" width="140" height="100">
             <font size="10">PT. TALENTA BUMI</font>
             <br>
-            <font size="2">Site Office : Desa Lepasan, Kel. Sungai Tampung, Kecamatan Bakumpai,
+            <font size="2">Site Office : Kel. Lepasan, Desa.Sungai Tampung, Kecamatan Bakumpai,
                 <br>
                 Kabupaten Barito Kuala, Kalimantan Selatan. 0511 – 4799344
             </font>
@@ -77,7 +77,7 @@ if (isset($_POST['c1'])) {
                                                 LEFT JOIN pb AS tpb ON rh.id_pb = tpb.id_pb
                                                 LEFT JOIN fppk AS tfppk ON rh.id_fppk = tfppk.id_fppk
                                                 LEFT JOIN fppp AS tfppp ON rh.id_fppp = tfppp.id_fppp
-                                                ORDER BY id_rh ASC");
+                                                WHERE lokasi_rh = '$lokasi_rh'");
                         while ($row = $data->fetch_array()) {
                         ?>
                             <tr>
@@ -96,33 +96,23 @@ if (isset($_POST['c1'])) {
                             </tr>
                         <?php } ?>
                         <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th>
+                            <th colspan="10" align="right">
                                 <?php
                                 $data = $koneksi->query("SELECT SUM(rp) AS total FROM rekap_harian AS rh
                                   LEFT JOIN pi AS tpi ON rh.id_pi = tpi.id_pi
                                   LEFT JOIN pb AS tpb ON rh.id_pb = tpb.id_pb
                                   LEFT JOIN fppk AS tfppk ON rh.id_fppk = tfppk.id_fppk
                                   LEFT JOIN fppp AS tfppp ON rh.id_fppp = tfppp.id_fppp
-                                  ORDER BY id_rh ASC")->fetch_array();
+                                  WHERE lokasi_rh = '$lokasi_rh'")->fetch_array();
 
                                 ?>
                                 <b>
                                     Total :
                                 </b>
                             </th>
-                            <th>
+                            <th colspan="2" align="left">
                                 <b>Rp.<?= $data['total'] ?></b>
                             </th>
-                            <th></th>
                         </tr>
 
 

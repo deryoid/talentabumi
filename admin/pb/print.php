@@ -38,7 +38,7 @@ $bln = array(
             <img src="<?= base_url('assets/dist/img/logo.jpeg') ?>" align="left" width="140" height="100">
             <font size="10">PT. TALENTA BUMI</font>
             <br>
-            <font size="2">Site Office : Desa Lepasan, Kel. Sungai Tampung, Kecamatan Bakumpai,
+            <font size="2">Site Office : Kel. Lepasan, Desa.Sungai Tampung, Kecamatan Bakumpai,
                 <br>
                 Kabupaten Barito Kuala, Kalimantan Selatan. 0511 – 4799344
             </font>
