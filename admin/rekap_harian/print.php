@@ -91,7 +91,14 @@ if (isset($_POST['c1'])) {
                                 <td><?= $row['no_pp'] ?></td>
                                 <td><?= $row['no_fppp'] ?></td>
                                 <td><?= $row['nama_kebutuhan'] ?></td>
-                                <td>Rp.<?= $row['rp'] ?></td>
+                                <td>
+                                    <?php if ($row['rp'] == NULL or $row['rp'] == '') {
+                                        echo "0";
+                                    } else {
+                                        echo rupiah($row['rp']);
+                                    }
+                                    ?>
+                                </td>
                                 <td><?= $row['keterangan_rh'] ?></td>
                             </tr>
                         <?php } ?>
@@ -111,7 +118,7 @@ if (isset($_POST['c1'])) {
                                 </b>
                             </th>
                             <th colspan="2" align="left">
-                                <b>Rp.<?= $data['total'] ?></b>
+                                <b><?= rupiah($data['total']) ?></b>
                             </th>
                         </tr>
 
@@ -168,6 +175,10 @@ if (isset($_POST['c1'])) {
 
         return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
     }
-
+    function rupiah($angka)
+    {
+        $hasil = 'Rp ' . number_format($angka, 2, ",", ".");
+        return $hasil;
+    }
     ?>
 </script>

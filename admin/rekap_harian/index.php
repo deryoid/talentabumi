@@ -107,7 +107,14 @@ include '../../templates/head.php';
                                                         <td><?= $row['no_pp'] ?></td>
                                                         <td><?= $row['no_fppp'] ?></td>
                                                         <td><?= $row['nama_kebutuhan'] ?></td>
-                                                        <td><?= $row['rp'] ?></td>
+                                                        <td>
+                                                            <?php if ($row['rp'] == NULL or $row['rp'] == '') {
+                                                                echo "0";
+                                                            } else {
+                                                                echo rupiah($row['rp']);
+                                                            }
+                                                            ?>
+                                                        </td>
                                                         <td><?= $row['keterangan_rh'] ?></td>
                                                         <td align="center">
                                                             <a href="edit?id=<?= $row['id_rh'] ?>" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i> Edit</a>
@@ -145,7 +152,13 @@ include '../../templates/head.php';
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <?php include_once "../../templates/script.php"; ?>
+    <?php include_once "../../templates/script.php";
+    function rupiah($angka)
+    {
+        $hasil = 'Rp ' . number_format($angka, 2, ",", ".");
+        return $hasil;
+    }
+    ?>
 
     <script>
         $(document).on('click', '[data-toggle="lightbox"]', function(event) {

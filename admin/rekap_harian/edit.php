@@ -90,8 +90,8 @@ $row = $data->fetch_array();
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No PI</label>
                                             <div class="col-sm-10">
-                                                <select class="form control select2" name="id_pi" id="id_pi" data-placeholder="Pilih" style="width: 100%;" required>
-                                                    <option value=""></option>
+                                                <select class="form control select2" name="id_pi" id="id_pi" data-placeholder="Pilih" style="width: 100%;">
+                                                    <option value="0"></option>
                                                     <?php
                                                     $sd = $koneksi->query("SELECT * FROM pi ORDER BY id_pi DESC");
                                                     foreach ($sd as $item) {
@@ -104,8 +104,8 @@ $row = $data->fetch_array();
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No PB</label>
                                             <div class="col-sm-10">
-                                                <select class="form control select2" name="id_pb" id="id_pb" data-placeholder="Pilih" style="width: 100%;" required>
-                                                    <option value=""></option>
+                                                <select class="form control select2" name="id_pb" id="id_pb" data-placeholder="Pilih" style="width: 100%;">
+                                                    <option value="0"></option>
                                                     <?php
                                                     $sd = $koneksi->query("SELECT * FROM pb ORDER BY id_pb DESC");
                                                     foreach ($sd as $item) {
@@ -118,8 +118,8 @@ $row = $data->fetch_array();
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No FPPK</label>
                                             <div class="col-sm-10">
-                                                <select class="form control select2" name="id_fppk" id="id_fppk" data-placeholder="Pilih" style="width: 100%;" required>
-                                                    <option value=""></option>
+                                                <select class="form control select2" name="id_fppk" id="id_fppk" data-placeholder="Pilih" style="width: 100%;">
+                                                    <option value="0"></option>
                                                     <?php
                                                     $sd = $koneksi->query("SELECT * FROM fppk ORDER BY id_fppk DESC");
                                                     foreach ($sd as $item) {
@@ -138,8 +138,8 @@ $row = $data->fetch_array();
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No FPPP</label>
                                             <div class="col-sm-10">
-                                                <select class="form control select2" name="id_fppp" id="id_fppp" data-placeholder="Pilih" style="width: 100%;" required>
-                                                    <option value=""></option>
+                                                <select class="form control select2" name="id_fppp" id="id_fppp" data-placeholder="Pilih" style="width: 100%;">
+                                                    <option value="0"></option>
                                                     <?php
                                                     $sd = $koneksi->query("SELECT * FROM fppp ORDER BY id_fppp DESC");
                                                     foreach ($sd as $item) {
@@ -237,6 +237,8 @@ $row = $data->fetch_array();
         id_rh = '$id'
         ");
 
+        // var_dump($submit, $koneksi->error);
+        // die();
 
         if ($submit) {
             $_SESSION['pesan'] = "Data Berhasil Diubah";
