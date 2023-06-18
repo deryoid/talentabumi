@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Waktu pembuatan: 20 Feb 2023 pada 03.43
+-- Waktu pembuatan: 18 Jun 2023 pada 08.39
 -- Versi server: 5.7.34
 -- Versi PHP: 7.4.21
 
@@ -117,6 +117,46 @@ INSERT INTO `fppp` (`id_fppp`, `tanggal_permintaan`, `no_fppp`, `keterangan`) VA
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `lokasi`
+--
+
+CREATE TABLE `lokasi` (
+  `id_lokasi` int(11) NOT NULL,
+  `bagian` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `lokasi`
+--
+
+INSERT INTO `lokasi` (`id_lokasi`, `bagian`) VALUES
+(1, 'Sub Divisi Trainee');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `monitoring`
+--
+
+CREATE TABLE `monitoring` (
+  `id_monitoring` int(11) NOT NULL,
+  `lokasi_rh` varchar(20) NOT NULL,
+  `id_lokasi` int(11) NOT NULL,
+  `nama_inventaris` varchar(50) NOT NULL,
+  `nomor_inventaris` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `monitoring`
+--
+
+INSERT INTO `monitoring` (`id_monitoring`, `lokasi_rh`, `id_lokasi`, `nama_inventaris`, `nomor_inventaris`, `status`) VALUES
+(1, 'MARABAHAN', 1, 'Laptop Acer', 'UMUM/015/ACER', 'PEMELIHARAAN');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `pb`
 --
 
@@ -175,6 +215,27 @@ INSERT INTO `pi` (`id_pi`, `tanggal_permintaan`, `no_pi`, `keterangan`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `pp`
+--
+
+CREATE TABLE `pp` (
+  `id_pp` int(11) NOT NULL,
+  `tanggal_permintaan` date NOT NULL,
+  `no_pp` varchar(40) NOT NULL,
+  `keterangan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `pp`
+--
+
+INSERT INTO `pp` (`id_pp`, `tanggal_permintaan`, `no_pp`, `keterangan`) VALUES
+(22, '2023-06-18', '001', '-'),
+(24, '2023-06-19', '002', '-');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `rekap_harian`
 --
 
@@ -186,7 +247,7 @@ CREATE TABLE `rekap_harian` (
   `id_pi` int(11) DEFAULT NULL,
   `id_pb` int(11) DEFAULT NULL,
   `id_fppk` int(11) DEFAULT NULL,
-  `no_pp` varchar(20) DEFAULT NULL,
+  `id_pp` int(11) DEFAULT NULL,
   `id_fppp` int(11) DEFAULT NULL,
   `nama_kebutuhan` varchar(40) DEFAULT NULL,
   `rp` varchar(50) DEFAULT NULL,
@@ -197,47 +258,47 @@ CREATE TABLE `rekap_harian` (
 -- Dumping data untuk tabel `rekap_harian`
 --
 
-INSERT INTO `rekap_harian` (`id_rh`, `lokasi_rh`, `tanggal_pembuatan`, `departemen_rh`, `id_pi`, `id_pb`, `id_fppk`, `no_pp`, `id_fppp`, `nama_kebutuhan`, `rp`, `keterangan_rh`) VALUES
-(7, 'MARABAHAN', '2023-01-02', 'HSE', 0, 0, 2, '001', 0, 'Papan Tulis Kaca Ukuran 70x100 CM (4 Pcs', '400000', 'Rekap Nota'),
-(18, 'LIANG ANGGANG', '2023-01-02', 'HRGA', 0, 2, 0, '', 0, 'Element Filter AC LV (8 Pcs)', '', 'Liang Anggang'),
-(19, 'LIANG ANGGANG', '2023-01-02', 'PLANT', 0, 0, 0, '', 2, 'Perbaikan O- Ring Elbow', '', 'Liang Anggang'),
-(22, 'LIANG ANGGANG', '2023-01-02', 'HRGA', 12, 0, 0, '', 0, 'Hard Disk External 1 TB (SIAGATE)', '', 'Liang Anggang'),
-(23, 'LIANG ANGGANG', '2023-01-02', 'HRGA', 13, 0, 0, '', 0, 'Komputer Desktop', '', 'Liang Anggang'),
-(24, 'LIANG ANGGANG', '2023-01-02', 'ENG', 14, 0, 0, '', 0, 'Laptop (ACER ASPIRATE 4750- 2312G50MN)', '', 'Liang Anggang'),
-(25, 'LIANG ANGGANG', '2023-01-02', 'ENG', 16, 0, 0, '', 0, 'Laptop (TOSHIBA SATELITE L645 1101)', '', 'Liang Anggang'),
-(26, 'LIANG ANGGANG', '2023-01-02', 'HRGA', 17, 0, 0, '', 0, 'Software WIN XP Professional SP3', '', 'Liang Anggang'),
-(30, 'MARABAHAN', '2023-01-03', 'HRGA', 0, 0, 3, '002', 0, 'Upah Tukang Pembuatan Gudang Besi Bekas ', '600000', 'Kwitansi'),
-(40, 'LIANG ANGGANG', '2023-01-03', 'HRGA', 0, 3, 0, '', 0, 'Bohlam Philips (2 Pcs)', '', 'Liang Anggang'),
-(41, 'LIANG ANGGANG', '2023-01-03', 'PLANT', 21, 0, 0, '', 3, 'Perbaikan Hole Hydraulic', '', 'Liang Anggang'),
-(47, 'MARABAHAN', '2023-01-04', 'HRGA', 0, 0, 4, '003', 0, 'Konsumsi Kegiatan Savety Talk Periode 03', '', 'Rekap Nota'),
-(48, 'LIANG ANGGANG', '2023-01-04', 'HRGA', 0, 4, 0, '', 0, 'Stabilizer LH (2 Pcs)', '', 'Liang Anggang'),
-(49, 'LIANG ANGGANG', '2023-01-04', 'PORT', 0, 0, 0, '', 4, 'Perbaikan Baut Timbangan di STA KM 2', '', 'Liang Anggang'),
-(50, 'LIANG ANGGANG', '2023-01-04', 'PORT', 17, 0, 0, '', 0, 'Mesin Pompa Air (NS-100+KOYO 22H)', '', 'Liang Anggang'),
-(51, 'LIANG ANGGANG', '2023-01-04', 'PORT', 18, 0, 0, '', 0, 'Tandon Air 1.100 L (GRAND)', '', 'Liang Anggang'),
-(52, 'MARABAHAN', '2023-01-05', 'PLANT', 0, 0, 5, '004', 0, 'Binder Clips No 105 (2 Box), Binder Clip', '200000', 'Rekap Nota'),
-(53, 'LIANG ANGGANG', '2023-01-05', 'HRGA', 0, 5, 0, '', 0, 'Engine Mounting LH/RH (2 Pcs)', '', 'Liang Anggang'),
-(54, 'LIANG ANGGANG', '2023-01-05', 'PLANT', 0, 0, 0, '', 5, 'Perbaikan Rotator Line 1', '', 'Liang Anggang'),
-(55, 'LIANG ANGGANG', '2023-01-05', 'PORT', 19, 0, 0, '', 0, 'Container', '', 'Liang Anggang'),
-(56, 'MARABAHAN', '2023-01-06', 'ENG', 0, 0, 6, '005', 0, 'Baterai Drone Phantom  4 Pro (2 Pcs)', '4000000', 'Kwitansi'),
-(57, 'LIANG ANGGANG', '2023-01-06', '', 0, 6, 0, '', 0, 'Transmisi Mounting (2 Pcs)', '', 'Liang Anggang'),
-(58, 'LIANG ANGGANG', '2023-01-06', 'PORT', 0, 0, 0, '', 6, 'Perbaikan Per Belakang Sarana LV 03', '', 'Liang Anggang'),
-(61, 'MARABAHAN', '2023-01-09', 'HRGA', 0, 0, 7, '006', 0, 'Pembelian Baterai Radio HT 1 COM V88', '800000', 'Rekap Nota'),
-(62, 'LIANG ANGGANG', '2023-01-09', 'HRGA', 0, 7, 0, '', 0, 'Filter Oli (2 Pcs)', '', 'Liang Anggang'),
-(63, 'LIANG ANGGANG', '2023-01-09', 'PLANT', 0, 0, 0, '', 7, 'Perbaikan Dongkrak 1 Ton', '', 'Liang Anggang'),
-(64, 'MARABAHAN', '2023-01-10', 'ENG', 0, 0, 8, '007', 0, 'Rak Besi Ukuran 50x100x200 CM (2 Set)', '900000', 'Kwitansi'),
-(65, 'LIANG ANGGANG', '2023-01-10', 'PLANT', 0, 8, 0, '', 0, 'Filter Solar Atas (2 Pcs) & Filter Solar', '', 'Liang Anggang'),
-(66, 'LIANG ANGGANG', '2023-01-10', 'PLANT', 0, 0, 0, '', 8, 'Perbaikan Gear Box Hopper 13 ', '', 'Liang Anggang'),
-(67, 'MARABAHAN', '2023-01-11', 'HSE', 0, 0, 9, '008', 0, 'Jasa Angkut Sampah Area Talenta Bumi', '250000', 'Kwitansi'),
-(68, 'LIANG ANGGANG', '2023-01-11', 'PLANT', 0, 9, 0, '', 0, 'Pin Guide (2 Pcs)', '', 'Liang Anggang'),
-(69, 'LIANG ANGGANG', '2023-01-11', '', 0, 0, 0, '', 9, 'Perbaikan Genset 01 & No 05', '', 'Liang Anggang'),
-(70, 'LIANG ANGGANG', '2023-01-11', 'PORT', 20, 0, 0, '', 0, 'Tandon Air 3.300 L ', '', 'Liang Anggang'),
-(71, 'MARABAHAN', '2023-01-12', 'HRGA', 0, 0, 10, '009', 0, 'Jasa Laundry Bed Cover Full Set Talenta ', '300000', 'Kwitansi'),
-(72, 'LIANG ANGGANG', '2023-01-12', 'PLANT', 0, 10, 0, '', 0, 'Neple Grease Elbow (100 Pcs)', '', 'Liang Anggang'),
-(73, 'LIANG ANGGANG', '2023-01-12', 'PLANT', 0, 0, 10, '', 0, 'Perbaikan Kompresor Wipro ', '', 'Liang Anggang'),
-(74, 'MARABAHAN', '2023-01-13', 'HRGA', 0, 0, 11, '010', 0, 'Pembelian Silinder Imperial', '600000', 'Kwitansi'),
-(75, 'LIANG ANGGANG', '2023-01-13', 'PORT', 0, 11, 0, '', 0, 'Fuse Mobil 15 A (25 Pcs)', '', 'Liang Anggang'),
-(76, 'LIANG ANGGANG', '2023-01-13', 'PLANT', 0, 0, 0, '', 11, 'Perbaikan Jaringan Listrik Tegangan Mene', '', 'Liang Anggang'),
-(77, 'LIANG ANGGANG', '2023-01-13', 'HRGA', 21, 0, 0, '', 0, 'Meja Meeting (BCT 106)', '', 'Liang Anggang');
+INSERT INTO `rekap_harian` (`id_rh`, `lokasi_rh`, `tanggal_pembuatan`, `departemen_rh`, `id_pi`, `id_pb`, `id_fppk`, `id_pp`, `id_fppp`, `nama_kebutuhan`, `rp`, `keterangan_rh`) VALUES
+(7, 'MARABAHAN', '2023-01-02', 'HSE', 0, 0, 2, NULL, 0, 'Papan Tulis Kaca Ukuran 70x100 CM (4 Pcs', '400000', 'Rekap Nota'),
+(18, 'LIANG ANGGANG', '2023-01-02', 'HRGA', 0, 2, 0, NULL, 0, 'Element Filter AC LV (8 Pcs)', '', 'Liang Anggang'),
+(19, 'LIANG ANGGANG', '2023-01-02', 'PLANT', 0, 0, 0, NULL, 2, 'Perbaikan O- Ring Elbow', '', 'Liang Anggang'),
+(22, 'LIANG ANGGANG', '2023-01-02', 'HRGA', 12, 0, 0, NULL, 0, 'Hard Disk External 1 TB (SIAGATE)', '', 'Liang Anggang'),
+(23, 'LIANG ANGGANG', '2023-01-02', 'HRGA', 13, 0, 0, NULL, 0, 'Komputer Desktop', '', 'Liang Anggang'),
+(24, 'LIANG ANGGANG', '2023-01-02', 'ENG', 14, 0, 0, NULL, 0, 'Laptop (ACER ASPIRATE 4750- 2312G50MN)', '', 'Liang Anggang'),
+(25, 'LIANG ANGGANG', '2023-01-02', 'ENG', 16, 0, 0, NULL, 0, 'Laptop (TOSHIBA SATELITE L645 1101)', '', 'Liang Anggang'),
+(26, 'LIANG ANGGANG', '2023-01-02', 'HRGA', 17, 0, 0, NULL, 0, 'Software WIN XP Professional SP3', '', 'Liang Anggang'),
+(30, 'MARABAHAN', '2023-01-03', 'HRGA', 0, 0, 3, 22, 0, 'Upah Tukang Pembuatan Gudang Besi Bekas ', '600000', 'Kwitansi'),
+(40, 'LIANG ANGGANG', '2023-01-03', 'HRGA', 0, 3, 0, NULL, 0, 'Bohlam Philips (2 Pcs)', '', 'Liang Anggang'),
+(41, 'LIANG ANGGANG', '2023-01-03', 'PLANT', 21, 0, 0, NULL, 3, 'Perbaikan Hole Hydraulic', '', 'Liang Anggang'),
+(47, 'MARABAHAN', '2023-01-04', 'HRGA', 0, 0, 4, NULL, 0, 'Konsumsi Kegiatan Savety Talk Periode 03', '', 'Rekap Nota'),
+(48, 'LIANG ANGGANG', '2023-01-04', 'HRGA', 0, 4, 0, NULL, 0, 'Stabilizer LH (2 Pcs)', '', 'Liang Anggang'),
+(49, 'LIANG ANGGANG', '2023-01-04', 'PORT', 0, 0, 0, NULL, 4, 'Perbaikan Baut Timbangan di STA KM 2', '', 'Liang Anggang'),
+(50, 'LIANG ANGGANG', '2023-01-04', 'PORT', 17, 0, 0, NULL, 0, 'Mesin Pompa Air (NS-100+KOYO 22H)', '', 'Liang Anggang'),
+(51, 'LIANG ANGGANG', '2023-01-04', 'PORT', 18, 0, 0, NULL, 0, 'Tandon Air 1.100 L (GRAND)', '', 'Liang Anggang'),
+(52, 'MARABAHAN', '2023-01-05', 'PLANT', 0, 0, 5, NULL, 0, 'Binder Clips No 105 (2 Box), Binder Clip', '200000', 'Rekap Nota'),
+(53, 'LIANG ANGGANG', '2023-01-05', 'HRGA', 0, 5, 0, NULL, 0, 'Engine Mounting LH/RH (2 Pcs)', '', 'Liang Anggang'),
+(54, 'LIANG ANGGANG', '2023-01-05', 'PLANT', 0, 0, 0, NULL, 5, 'Perbaikan Rotator Line 1', '', 'Liang Anggang'),
+(55, 'LIANG ANGGANG', '2023-01-05', 'PORT', 19, 0, 0, NULL, 0, 'Container', '', 'Liang Anggang'),
+(56, 'MARABAHAN', '2023-01-06', 'ENG', 0, 0, 6, NULL, 0, 'Baterai Drone Phantom  4 Pro (2 Pcs)', '4000000', 'Kwitansi'),
+(57, 'LIANG ANGGANG', '2023-01-06', '', 0, 6, 0, NULL, 0, 'Transmisi Mounting (2 Pcs)', '', 'Liang Anggang'),
+(58, 'LIANG ANGGANG', '2023-01-06', 'PORT', 0, 0, 0, NULL, 6, 'Perbaikan Per Belakang Sarana LV 03', '', 'Liang Anggang'),
+(61, 'MARABAHAN', '2023-01-09', 'HRGA', 0, 0, 7, NULL, 0, 'Pembelian Baterai Radio HT 1 COM V88', '800000', 'Rekap Nota'),
+(62, 'LIANG ANGGANG', '2023-01-09', 'HRGA', 0, 7, 0, NULL, 0, 'Filter Oli (2 Pcs)', '', 'Liang Anggang'),
+(63, 'LIANG ANGGANG', '2023-01-09', 'PLANT', 0, 0, 0, NULL, 7, 'Perbaikan Dongkrak 1 Ton', '', 'Liang Anggang'),
+(64, 'MARABAHAN', '2023-01-10', 'ENG', 0, 0, 8, NULL, 0, 'Rak Besi Ukuran 50x100x200 CM (2 Set)', '900000', 'Kwitansi'),
+(65, 'LIANG ANGGANG', '2023-01-10', 'PLANT', 0, 8, 0, NULL, 0, 'Filter Solar Atas (2 Pcs) & Filter Solar', '', 'Liang Anggang'),
+(66, 'LIANG ANGGANG', '2023-01-10', 'PLANT', 0, 0, 0, NULL, 8, 'Perbaikan Gear Box Hopper 13 ', '', 'Liang Anggang'),
+(67, 'MARABAHAN', '2023-01-11', 'HSE', 0, 0, 9, NULL, 0, 'Jasa Angkut Sampah Area Talenta Bumi', '250000', 'Kwitansi'),
+(68, 'LIANG ANGGANG', '2023-01-11', 'PLANT', 0, 9, 0, NULL, 0, 'Pin Guide (2 Pcs)', '', 'Liang Anggang'),
+(69, 'LIANG ANGGANG', '2023-01-11', '', 0, 0, 0, NULL, 9, 'Perbaikan Genset 01 & No 05', '', 'Liang Anggang'),
+(70, 'LIANG ANGGANG', '2023-01-11', 'PORT', 20, 0, 0, NULL, 0, 'Tandon Air 3.300 L ', '', 'Liang Anggang'),
+(71, 'MARABAHAN', '2023-01-12', 'HRGA', 0, 0, 10, NULL, 0, 'Jasa Laundry Bed Cover Full Set Talenta ', '300000', 'Kwitansi'),
+(72, 'LIANG ANGGANG', '2023-01-12', 'PLANT', 0, 10, 0, NULL, 0, 'Neple Grease Elbow (100 Pcs)', '', 'Liang Anggang'),
+(73, 'LIANG ANGGANG', '2023-01-12', 'PLANT', 0, 0, 10, NULL, 0, 'Perbaikan Kompresor Wipro ', '', 'Liang Anggang'),
+(74, 'MARABAHAN', '2023-01-13', 'HRGA', 0, 0, 11, NULL, 0, 'Pembelian Silinder Imperial', '600000', 'Kwitansi'),
+(75, 'LIANG ANGGANG', '2023-01-13', 'PORT', 0, 11, 0, NULL, 0, 'Fuse Mobil 15 A (25 Pcs)', '', 'Liang Anggang'),
+(76, 'LIANG ANGGANG', '2023-01-13', 'PLANT', 0, 0, 0, NULL, 11, 'Perbaikan Jaringan Listrik Tegangan Mene', '', 'Liang Anggang'),
+(77, 'LIANG ANGGANG', '2023-01-13', 'HRGA', 21, 0, 0, NULL, 0, 'Meja Meeting (BCT 106)', '', 'Liang Anggang');
 
 -- --------------------------------------------------------
 
@@ -247,6 +308,7 @@ INSERT INTO `rekap_harian` (`id_rh`, `lokasi_rh`, `tanggal_pembuatan`, `departem
 
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
+  `nama` varchar(25) DEFAULT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
   `role` varchar(20) NOT NULL
@@ -256,10 +318,11 @@ CREATE TABLE `user` (
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_user`, `username`, `password`, `role`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator'),
-(2, 'helda', '827ccb0eea8a706c4c34a16891f84e7b', 'Masyarakat'),
-(3, 'husain', '827ccb0eea8a706c4c34a16891f84e7b', 'Masyarakat');
+INSERT INTO `user` (`id_user`, `nama`, `username`, `password`, `role`) VALUES
+(1, 'Admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator'),
+(2, 'MARABAHAN', 'marabahan', '202cb962ac59075b964b07152d234b70', 'User'),
+(3, 'LIANG ANGGANG', 'lianganggang', '202cb962ac59075b964b07152d234b70', 'User'),
+(4, 'Pimpinan', 'pimpinan', '202cb962ac59075b964b07152d234b70', 'Pimpinan');
 
 --
 -- Indexes for dumped tables
@@ -284,6 +347,19 @@ ALTER TABLE `fppp`
   ADD PRIMARY KEY (`id_fppp`);
 
 --
+-- Indeks untuk tabel `lokasi`
+--
+ALTER TABLE `lokasi`
+  ADD PRIMARY KEY (`id_lokasi`);
+
+--
+-- Indeks untuk tabel `monitoring`
+--
+ALTER TABLE `monitoring`
+  ADD PRIMARY KEY (`id_monitoring`),
+  ADD KEY `id_lokasi` (`id_lokasi`);
+
+--
 -- Indeks untuk tabel `pb`
 --
 ALTER TABLE `pb`
@@ -294,6 +370,12 @@ ALTER TABLE `pb`
 --
 ALTER TABLE `pi`
   ADD PRIMARY KEY (`id_pi`);
+
+--
+-- Indeks untuk tabel `pp`
+--
+ALTER TABLE `pp`
+  ADD PRIMARY KEY (`id_pp`);
 
 --
 -- Indeks untuk tabel `rekap_harian`
@@ -330,6 +412,18 @@ ALTER TABLE `fppp`
   MODIFY `id_fppp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT untuk tabel `lokasi`
+--
+ALTER TABLE `lokasi`
+  MODIFY `id_lokasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `monitoring`
+--
+ALTER TABLE `monitoring`
+  MODIFY `id_monitoring` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `pb`
 --
 ALTER TABLE `pb`
@@ -342,6 +436,12 @@ ALTER TABLE `pi`
   MODIFY `id_pi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
+-- AUTO_INCREMENT untuk tabel `pp`
+--
+ALTER TABLE `pp`
+  MODIFY `id_pp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
 -- AUTO_INCREMENT untuk tabel `rekap_harian`
 --
 ALTER TABLE `rekap_harian`
@@ -351,7 +451,7 @@ ALTER TABLE `rekap_harian`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

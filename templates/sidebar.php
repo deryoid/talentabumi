@@ -63,7 +63,12 @@
               </li>
             </ul>
           </li>
-
+          <li class="nav-item">
+            <a href="<?= base_url('admin/monitoring') ?>" class="nav-link">
+              <i class="fas fa-info-circle nav-icon"></i>
+              <p>Monitoring Inventaris</p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="<?= base_url('admin/fppk') ?>" class="nav-link">
               <i class="fas fa-warehouse nav-icon"></i>
@@ -132,6 +137,12 @@
             <a href="<?= base_url('user/rekap_harian') ?>" class="nav-link">
               <i class="fas fa-pen-alt nav-icon"></i>
               <p>Rekap Harian</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= base_url('user/monitoring') ?>" class="nav-link">
+              <i class="fas fa-info-circle nav-icon"></i>
+              <p>Monitoring Inventaris</p>
             </a>
           </li>
         </ul>
