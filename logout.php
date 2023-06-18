@@ -1,17 +1,17 @@
 <?php
 
 session_start();
-   $_SESSION['id_user'];    
-   $_SESSION['username'];  
-   $_SESSION['role'];     
+$_SESSION['id_user'];
+$_SESSION['username'];
+$_SESSION['role'];
 
 
-if ($_SESSION['role'] == "Masyarakat") {
-   unset($_SESSION['id_masyarakat']);  
+if ($_SESSION['role'] == "User") {
+   unset($_SESSION["nama"]);
    unset($_SESSION["id_user"]);
    unset($_SESSION["username"]);
    unset($_SESSION["role"]);
-}else{
+} else {
    unset($_SESSION["id_user"]);
    unset($_SESSION["username"]);
    unset($_SESSION["role"]);

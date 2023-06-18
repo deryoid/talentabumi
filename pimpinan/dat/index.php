@@ -30,12 +30,12 @@ include '../../templates/head.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Rekap Harian</h1>
+                            <h1 class="m-0 text-dark">Daftar Aktiva Tetap</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Beranda</a></li>
-                                <li class="breadcrumb-item active">Rekap Harian</li>
+                                <li class="breadcrumb-item active">Daftar Aktiva Tetap</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -51,7 +51,7 @@ include '../../templates/head.php';
                             <div class="card card-primary card-outline">
                                 <div class="card-header">
                                     <a href="tambah" class="btn bg-primary"><i class="fa fa-plus-circle"> Tambah Data</i></a>
-                                    <a href="#" data-toggle="modal" data-target="#rekap_harian" class="btn bg-info"><i class="fa fa-print"> Cetak</i></a>
+                                    <a href="#" data-toggle="modal" data-target="#dat" class="btn bg-info"><i class="fa fa-print"> Cetak</i></a>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -71,55 +71,36 @@ include '../../templates/head.php';
                                             <thead class="bg-primary">
                                                 <tr align="center">
                                                     <th>No</th>
-                                                    <th>Lokasi </th>
-                                                    <th>Tanggal Pembuatan</th>
-                                                    <th>Dept</th>
-                                                    <th>No PI</th>
-                                                    <th>No PB</th>
-                                                    <th>NO FPPK</th>
-                                                    <th>No PP</th>
-                                                    <th>No FP3</th>
-                                                    <th>Nama Kebutuhan</th>
-                                                    <th>RP.</th>
-                                                    <th>Keterangan</th>
+                                                    <th>Departemen</th>
+                                                    <th>Nama Aktiva Tetap</th>
+                                                    <th>No Register</th>
+                                                    <th>Lokasi 1</th>
+                                                    <th>Lokasi 2</th>
+                                                    <th>Tanggal Perolehan</th>
+                                                    <th>Umur</th>
+                                                    <th>Nilai Perolehan</th>
                                                     <th>Opsi</th>
                                                 </tr>
                                             </thead>
                                             <tbody style="background-color: white">
                                                 <?php
                                                 $no = 1;
-                                                $data = $koneksi->query("SELECT * FROM rekap_harian AS rh
-                                                LEFT JOIN pi AS tpi ON rh.id_pi = tpi.id_pi
-                                                LEFT JOIN pp AS tpp ON rh.id_pp = tpp.id_pp
-                                                LEFT JOIN pb AS tpb ON rh.id_pb = tpb.id_pb
-                                                LEFT JOIN fppk AS tfppk ON rh.id_fppk = tfppk.id_fppk
-                                                LEFT JOIN fppp AS tfppp ON rh.id_fppp = tfppp.id_fppp
-                                                ORDER BY id_rh ASC");
+                                                $data = $koneksi->query("SELECT * FROM aktiva_tetap ORDER BY id_aktiva ASC");
                                                 while ($row = $data->fetch_array()) {
                                                 ?>
                                                     <tr>
                                                         <td align="center"><?= $no++ ?></td>
-                                                        <td><?= $row['lokasi_rh'] ?></td>
-                                                        <td><?= $row['tanggal_pembuatan'] ?></td>
-                                                        <td><?= $row['departemen_rh'] ?></td>
-                                                        <td><?= $row['no_pi'] ?></td>
-                                                        <td><?= $row['no_pb'] ?></td>
-                                                        <td><?= $row['no_fppk'] ?></td>
-                                                        <td><?= $row['no_pp'] ?></td>
-                                                        <td><?= $row['no_fppp'] ?></td>
-                                                        <td><?= $row['nama_kebutuhan'] ?></td>
-                                                        <td>
-                                                            <?php if ($row['rp'] == NULL or $row['rp'] == '') {
-                                                                echo "0";
-                                                            } else {
-                                                                echo rupiah($row['rp']);
-                                                            }
-                                                            ?>
-                                                        </td>
-                                                        <td><?= $row['keterangan_rh'] ?></td>
+                                                        <td><?= $row['jenis_aktiva'] ?></td>
+                                                        <td><?= $row['nama_aktiva'] ?></td>
+                                                        <td><?= $row['no_register'] ?></td>
+                                                        <td><?= $row['lokasi1'] ?></td>
+                                                        <td><?= $row['lokasi2'] ?></td>
+                                                        <td><?= $row['tanggal_perolehan'] ?></td>
+                                                        <td><?= $row['umur'] ?></td>
+                                                        <td><?= $row['nilai_perolehan'] ?></td>
                                                         <td align="center">
-                                                            <a href="edit?id=<?= $row['id_rh'] ?>" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i> Edit</a>
-                                                            <a href="hapus?id=<?= $row['id_rh'] ?>" class="btn btn-danger btn-sm alert-hapus" title="Hapus"><i class="fa fa-trash"></i> Hapus</a>
+                                                            <a href="edit?id=<?= $row['id_aktiva'] ?>" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i> Edit</a>
+                                                            <a href="hapus?id=<?= $row['id_aktiva'] ?>" class="btn btn-danger btn-sm alert-hapus" title="Hapus"><i class="fa fa-trash"></i> Hapus</a>
 
                                                         </td>
                                                     </tr>
@@ -153,13 +134,7 @@ include '../../templates/head.php';
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <?php include_once "../../templates/script.php";
-    function rupiah($angka)
-    {
-        $hasil = 'Rp ' . number_format($angka, 2, ",", ".");
-        return $hasil;
-    }
-    ?>
+    <?php include_once "../../templates/script.php"; ?>
 
     <script>
         $(document).on('click', '[data-toggle="lightbox"]', function(event) {
@@ -173,26 +148,34 @@ include '../../templates/head.php';
 </body>
 
 </html>
+
+
 <!-- MODAL LAPORAN SURAT MASUK -->
-<div id="rekap_harian" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div id="dat" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> -->
-                <h4 class="modal-title">Rekap Harian</h4>
+                <h4 class="modal-title">Daftar Aktiva Tetap</h4>
             </div>
             <div class="modal-body">
 
                 <!-- kategori -->
-                <label style="font-size: 15px; font-style: bold;">Berdasarkan Lokasi</label>
-                <form method="POST" target="blank" action="<?= base_url('admin/rekap_harian/print.php') ?>">
+                <label style="font-size: 15px; font-style: bold;">Berdasarkan Departemen</label>
+                <form method="POST" target="blank" action="<?= base_url('admin/dat/print.php') ?>">
                     <div class="row">
                         <div class="col-md-8">
                             <div class="form-group">
-                                <select class="form-control" data-placeholder="Pilih" name="lokasi_rh" required="">
+                                <select class="form-control" data-placeholder="Pilih" name="jenis_aktiva" required="">
                                     <option value="">-Pilih-</option>
-                                    <option value="MARABAHAN">MARABAHAN</option>
-                                    <option value="LIANG ANGGANG">LIANG ANGGANG</option>
+                                    <option value="HRGA">HRGA</option>
+                                    <option value="ENG">ENG</option>
+                                    <option value="HRM">HRM</option>
+                                    <option value="HSE">HSE</option>
+                                    <option value="CSR">CSR</option>
+                                    <option value="PLAN">PLAN</option>
+                                    <option value="PORT">PORT</option>
+                                    <option value="LOGISTIK">LOGISTIK</option>
                                 </select>
                             </div>
                         </div>

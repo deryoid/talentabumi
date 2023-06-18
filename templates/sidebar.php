@@ -46,7 +46,7 @@
             </a>
           </li>
 
-          <!-- <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-box"></i>
               <p>
@@ -56,21 +56,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= base_url('admin/user') ?>" class="nav-link">
+                <a href="<?= base_url('admin/bagian') ?>" class="nav-link">
                   <i class="fas fa-circle nav-icon"></i>
-                  <p>User</p>
+                  <p>Lokasi Bagian</p>
                 </a>
               </li>
             </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?= base_url('admin/site') ?>" class="nav-link">
-                  <i class="fas fa-chalkboard nav-icon"></i>
-                  <p>Site</p>
-                </a>
-              </li>
-            </ul>
-          </li> -->
+          </li>
 
           <li class="nav-item">
             <a href="<?= base_url('admin/fppk') ?>" class="nav-link">
@@ -94,6 +86,12 @@
             <a href="<?= base_url('admin/pi') ?>" class="nav-link">
               <i class="fas fa-chart-line nav-icon"></i>
               <p>Permintaan Investasi</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= base_url('admin/pp') ?>" class="nav-link">
+              <i class="fas fa-users nav-icon"></i>
+              <p>PP</p>
             </a>
           </li>
           <li class="nav-item">
@@ -123,64 +121,19 @@
           <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="<?= base_url('masyarakat/index') ?>" class="nav-link">
+            <a href="<?= base_url('user/index') ?>" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-edit"></i>
-              <p>
-                Profil
-                <i class="right fas fa-angle-left"></i>
-              </p>
+          <li class="nav-item">
+            <a href="<?= base_url('user/rekap_harian') ?>" class="nav-link">
+              <i class="fas fa-pen-alt nav-icon"></i>
+              <p>Rekap Harian</p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?= base_url('masyarakat/biodata') ?>" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>
-                    Biodata
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?= base_url('masyarakat/biodata/ubahpw') ?>" class="nav-link">
-                  <i class="nav-icon fas fa-lock"></i>
-                  <p>
-                    Ganti Password
-                  </p>
-                </a>
-              </li>
-            </ul>
           </li>
-
-
-          <?php
-          $data = $koneksi->query("SELECT * FROM masyarakat WHERE id_masyarakat = '$_SESSION[id_masyarakat]'")->fetch_array();
-          if ($data['status'] == 'Tidak Aktif' or $data['status'] ==  NULL) {
-          } else {
-          ?>
-            <li class="nav-item">
-              <a href="<?= base_url('masyarakat/pendaftaran') ?>" class="nav-link">
-                <i class="nav-icon fas fa-address-card"></i>
-                <p>
-                  Pendaftaran/Pengajuan
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?= base_url('masyarakat/pencarikerja') ?>" class="nav-link">
-                <i class="nav-icon fas fa-search"></i>
-                <p>
-                  Pencari Kerja
-                </p>
-              </a>
-            </li>
-          <?php } ?>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -100,13 +100,13 @@ include '../../templates/head.php';
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No PB</label>
                                             <div class="col-sm-10">
-                                                <select class="form control select2" name="id_pb" data-placeholder="Pilih" style="width: 100%;">
+                                                <select class="form control select2" name="id_pp" data-placeholder="Pilih" style="width: 100%;">
                                                     <option value="0"></option>
                                                     <?php
-                                                    $k = $koneksi->query("SELECT * FROM pb");
+                                                    $k = $koneksi->query("SELECT * FROM pp");
                                                     foreach ($k as $item) {
                                                     ?>
-                                                        <option value="<?= $item['id_pb'] ?>"><?= $item['no_pb'] ?></option>
+                                                        <option value="<?= $item['id_pp'] ?>"><?= $item['no_pp'] ?></option>
 
                                                     <?php } ?>
                                                 </select>
@@ -130,7 +130,16 @@ include '../../templates/head.php';
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No PP</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="no_pp">
+                                                <select class="form control select2" name="id_pb" data-placeholder="Pilih" style="width: 100%;">
+                                                    <option value="0"></option>
+                                                    <?php
+                                                    $k = $koneksi->query("SELECT * FROM pb");
+                                                    foreach ($k as $item) {
+                                                    ?>
+                                                        <option value="<?= $item['id_pb'] ?>"><?= $item['no_pb'] ?></option>
+
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -213,7 +222,7 @@ include '../../templates/head.php';
         $id_pi = $_POST['id_pi'];
         $id_pb = $_POST['id_pb'];
         $id_fppk = $_POST['id_fppk'];
-        $no_pp = $_POST['no_pp'];
+        $id_pp = $_POST['id_pp'];
         $id_fppp = $_POST['id_fppp'];
         $nama_kebutuhan = $_POST['nama_kebutuhan'];
         $rp = $_POST['rp'];
@@ -227,7 +236,7 @@ include '../../templates/head.php';
         '$id_pi',
         '$id_pb',
         '$id_fppk',
-        '$no_pp',
+        '$id_pp',
         '$id_fppp',
         '$nama_kebutuhan',
         '$rp',

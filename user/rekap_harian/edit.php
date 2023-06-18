@@ -68,11 +68,7 @@ $row = $data->fetch_array();
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Lokasi</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control" data-placeholder="Pilih" name="lokasi_rh">
-                                                    <option value="<?= $row['lokasi_rh'] ?>"><?= $row['lokasi_rh'] ?></option>
-                                                    <option value="MARABAHAN">MARABAHAN</option>
-                                                    <option value="LIANG ANGGANG">LIANG ANGGANG</option>
-                                                </select>
+                                                <input type="text" class="form-control" value="<?= $_SESSION['nama']; ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -132,15 +128,7 @@ $row = $data->fetch_array();
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No PP</label>
                                             <div class="col-sm-10">
-                                                <select class="form control select2" name="id_pp" id="id_pp" data-placeholder="Pilih" style="width: 100%;">
-                                                    <option value="0"></option>
-                                                    <?php
-                                                    $sd = $koneksi->query("SELECT * FROM pp ORDER BY id_pp DESC");
-                                                    foreach ($sd as $item) {
-                                                    ?>
-                                                        <option value="<?= $item['id_pp'] ?>" <?= $row['id_pp'] == $item['id_pp'] ? 'selected' : '' ?>><?= $item['no_pp'] ?></option>
-                                                    <?php } ?>
-                                                </select>
+                                                <input type="text" class="form-control" name="no_pp" value="<?= $row['no_pp'] ?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -216,13 +204,12 @@ $row = $data->fetch_array();
 
     <?php
     if (isset($_POST['submit'])) {
-        $lokasi_rh = $_POST['lokasi_rh'];
         $tanggal_pembuatan = $_POST['tanggal_pembuatan'];
         $departemen_rh = $_POST['departemen_rh'];
         $id_pi = $_POST['id_pi'];
         $id_pb = $_POST['id_pb'];
         $id_fppk = $_POST['id_fppk'];
-        $id_pp = $_POST['id_pp'];
+        $no_pp = $_POST['no_pp'];
         $id_fppp = $_POST['id_fppp'];
         $nama_kebutuhan = $_POST['nama_kebutuhan'];
         $rp = $_POST['rp'];
@@ -230,13 +217,12 @@ $row = $data->fetch_array();
 
 
         $submit = $koneksi->query("UPDATE rekap_harian SET 
-        lokasi_rh = '$lokasi_rh',
         tanggal_pembuatan = '$tanggal_pembuatan',
         departemen_rh = '$departemen_rh',
         id_pi = '$id_pi',
         id_pb = '$id_pb',
         id_fppk = '$id_fppk',
-        id_pp = '$id_pp',
+        no_pp = '$no_pp',
         id_fppp = '$id_fppp',
         nama_kebutuhan = '$nama_kebutuhan',
         rp = '$rp',

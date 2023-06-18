@@ -209,6 +209,7 @@ if (isset($_POST['login'])) {
                      WHERE username = '$user' AND password = '$pass'");
   $row = mysqli_fetch_array($query);
 
+  $nama       = $row['nama'];
   $username   = $row['username'];
   $password   = $row['password'];
   $id_user    = $row['id_user'];
@@ -219,22 +220,17 @@ if (isset($_POST['login'])) {
   if ($user == $username && $pass == $password) {
 
     $_SESSION['id_user']    = $id_user;
+    $_SESSION['nama']       = $nama;
     $_SESSION['username']   = $username;
     $_SESSION['role']       = $role;
 
 
     if ($role == "Administrator") {
       echo "<script>window.location.replace('admin/');</script>";
-    } elseif ($role == "Masyarakat") {
-      $ptg = $koneksi->query("SELECT * FROM masyarakat AS p 
-      LEFT JOIN user AS u ON p.id_user = u.id_user
-      WHERE p.id_user = '$_SESSION[id_user]'
-      ")->fetch_array();
-      $_SESSION['nama_masyarakat']  = $ptg['nama_masyarakat'];
-      $_SESSION['id_masyarakat'] = $ptg['id_masyarakat'];
-      echo "<script>window.location.replace('masyarakat/');</script>";
-    } elseif ($role == "Owner") {
-      echo "<script>window.location.replace('kadis/');</script>";
+    } elseif ($role == "User") {
+      echo "<script>window.location.replace('user/');</script>";
+    } elseif ($role == "Pimpinan") {
+      echo "<script>window.location.replace('pimpinan/');</script>";
     }
   } else {
     $_SESSION['pesan'] = 'Username atau Password Tidak Ditemukan';

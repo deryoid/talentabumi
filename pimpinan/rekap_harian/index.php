@@ -90,7 +90,6 @@ include '../../templates/head.php';
                                                 $no = 1;
                                                 $data = $koneksi->query("SELECT * FROM rekap_harian AS rh
                                                 LEFT JOIN pi AS tpi ON rh.id_pi = tpi.id_pi
-                                                LEFT JOIN pp AS tpp ON rh.id_pp = tpp.id_pp
                                                 LEFT JOIN pb AS tpb ON rh.id_pb = tpb.id_pb
                                                 LEFT JOIN fppk AS tfppk ON rh.id_fppk = tfppk.id_fppk
                                                 LEFT JOIN fppp AS tfppp ON rh.id_fppp = tfppp.id_fppp
