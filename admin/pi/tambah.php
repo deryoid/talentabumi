@@ -78,7 +78,18 @@ include '../../templates/head.php';
                                                 <textarea class="form-control" name="keterangan" required=""></textarea>
                                             </div>
                                         </div>
-
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Jumlah</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="jumlah" required="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Satuan</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="satuan" required="">
+                                            </div>
+                                        </div>
                                     </div>
                                     <!-- /.card-body -->
 
@@ -122,12 +133,16 @@ include '../../templates/head.php';
         $tanggal_permintaan = $_POST['tanggal_permintaan'];
         $no_pi = $_POST['no_pi'];
         $keterangan = $_POST['keterangan'];
+        $jumlah = $_POST['jumlah'];
+        $satuan = $_POST['satuan'];
 
         $submit = $koneksi->query("INSERT INTO pi VALUES (
         NULL,
         '$tanggal_permintaan',
         '$no_pi',
-        '$keterangan'
+        '$keterangan',
+        '$jumlah',
+        '$satuan'
         )");
         // var_dump($submit, $koneksi->error);
         // die();

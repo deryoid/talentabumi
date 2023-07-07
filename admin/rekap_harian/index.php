@@ -80,7 +80,10 @@ include '../../templates/head.php';
                                                     <th>No PP</th>
                                                     <th>No FP3</th>
                                                     <th>Nama Kebutuhan</th>
+                                                    <th>Jumlah</th>
+                                                    <th>Satuan</th>
                                                     <th>RP.</th>
+                                                    <th>Total Harga</th>
                                                     <th>Keterangan</th>
                                                     <th>Opsi</th>
                                                 </tr>
@@ -108,11 +111,25 @@ include '../../templates/head.php';
                                                         <td><?= $row['no_pp'] ?></td>
                                                         <td><?= $row['no_fppp'] ?></td>
                                                         <td><?= $row['nama_kebutuhan'] ?></td>
+                                                        <td><?= $row['jumlah_rh'] ?></td>
+                                                        <td><?= $row['satuan_rh'] ?></td>
+
                                                         <td>
                                                             <?php if ($row['rp'] == NULL or $row['rp'] == '') {
                                                                 echo "0";
                                                             } else {
                                                                 echo rupiah($row['rp']);
+                                                            }
+                                                            ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php
+                                                            $harga = $row['jumlah_rh'] * $row['rp'];
+
+                                                            if ($harga == NULL or $harga == '') {
+                                                                echo "0";
+                                                            } else {
+                                                                echo rupiah($harga);
                                                             }
                                                             ?>
                                                         </td>

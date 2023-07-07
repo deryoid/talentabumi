@@ -56,6 +56,8 @@ $bln = array(
                             <th>Tanggal</th>
                             <th>No Permintaan Investasi</th>
                             <th>Keterangan</th>
+                            <th>Jumlah</th>
+                            <th>Satuan</th>
                         </tr>
                     </thead>
                     <tbody style="background-color: white">
@@ -69,6 +71,8 @@ $bln = array(
                                 <td><?= $row['tanggal_permintaan'] ?></td>
                                 <td><?= $row['no_pi'] ?></td>
                                 <td><?= $row['keterangan'] ?></td>
+                                <td><?= $row['jumlah'] ?></td>
+                                <td><?= $row['satuan'] ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>

@@ -83,6 +83,18 @@ $row = $data->fetch_array();
                                             </div>
                                         </div>
 
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Jumlah</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="jumlah" value="<?= $row['jumlah'] ?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Satuan</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="satuan" value="<?= $row['satuan'] ?>">
+                                            </div>
+                                        </div>
 
 
                                     </div>
@@ -127,12 +139,16 @@ $row = $data->fetch_array();
         $tanggal_permintaan = $_POST['tanggal_permintaan'];
         $no_pi = $_POST['no_pi'];
         $keterangan = $_POST['keterangan'];
+        $jumlah = $_POST['jumlah'];
+        $satuan = $_POST['satuan'];
 
 
         $submit = $koneksi->query("UPDATE pi SET 
         tanggal_permintaan = '$tanggal_permintaan',
         no_pi = '$no_pi',
-        keterangan = '$keterangan'
+        keterangan = '$keterangan',
+        jumlah = '$jumlah',
+        satuan = '$satuan'
         WHERE 
         id_pi = '$id'
         ");

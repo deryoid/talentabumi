@@ -75,6 +75,8 @@ include '../../templates/head.php';
                                                     <th>Tanggal</th>
                                                     <th>No FPPK</th>
                                                     <th>Uraian Kebutuhan</th>
+                                                    <th>Jumlah</th>
+                                                    <th>satuan</th>
                                                     <th>Opsi</th>
                                                 </tr>
                                             </thead>
@@ -90,6 +92,8 @@ include '../../templates/head.php';
                                                         <td><?= $row['tanggal'] ?></td>
                                                         <td><?= $row['no_fppk'] ?></td>
                                                         <td><?= $row['uraian_kebutuhan'] ?></td>
+                                                        <td><?= $row['jumlah'] ?></td>
+                                                        <td><?= $row['satuan'] ?></td>
                                                         <td align="center">
                                                             <a href="edit?id=<?= $row['id_fppk'] ?>" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i> Edit</a>
                                                             <a href="hapus?id=<?= $row['id_fppk'] ?>" class="btn btn-danger btn-sm alert-hapus" title="Hapus"><i class="fa fa-trash"></i> Hapus</a>

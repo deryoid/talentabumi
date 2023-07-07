@@ -64,8 +64,11 @@ if (isset($_POST['c1'])) {
                             <th>NO FPPK</th>
                             <th>No PP</th>
                             <th>No FP3</th>
-                            <th>Nama Kebutuhan</th>
+                            <th>Kebutuhan</th>
+                            <th>Jumlah</th>
+                            <th>Satuan</th>
                             <th>RP.</th>
+                            <th>Total Harga</th>
                             <th>Keterangan</th>
                         </tr>
                     </thead>
@@ -91,6 +94,9 @@ if (isset($_POST['c1'])) {
                                 <td><?= $row['no_pp'] ?></td>
                                 <td><?= $row['no_fppp'] ?></td>
                                 <td><?= $row['nama_kebutuhan'] ?></td>
+                                <td><?= $row['jumlah_rh'] ?></td>
+                                <td><?= $row['satuan_rh'] ?></td>
+
                                 <td>
                                     <?php if ($row['rp'] == NULL or $row['rp'] == '') {
                                         echo "0";
@@ -99,13 +105,24 @@ if (isset($_POST['c1'])) {
                                     }
                                     ?>
                                 </td>
+                                <td>
+                                    <?php
+                                    $harga = $row['jumlah_rh'] * $row['rp'];
+
+                                    if ($harga == NULL or $harga == '') {
+                                        echo "0";
+                                    } else {
+                                        echo rupiah($harga);
+                                    }
+                                    ?>
+                                </td>
                                 <td><?= $row['keterangan_rh'] ?></td>
                             </tr>
                         <?php } ?>
                         <tr>
-                            <th colspan="10" align="right">
+                            <th colspan="13" align="right">
                                 <?php
-                                $data = $koneksi->query("SELECT SUM(rp) AS total FROM rekap_harian AS rh
+                                $data = $koneksi->query("SELECT SUM(rp*jumlah_rh) AS total FROM rekap_harian AS rh
                                   LEFT JOIN pi AS tpi ON rh.id_pi = tpi.id_pi
                                   LEFT JOIN pb AS tpb ON rh.id_pb = tpb.id_pb
                                   LEFT JOIN fppk AS tfppk ON rh.id_fppk = tfppk.id_fppk

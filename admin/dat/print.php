@@ -82,8 +82,15 @@ if (isset($_POST['c1'])) {
                                 <td><?= $row['lokasi1'] ?></td>
                                 <td><?= $row['lokasi2'] ?></td>
                                 <td><?= $row['tanggal_perolehan'] ?></td>
-                                <td><?= $row['umur'] ?></td>
-                                <td><?= $row['nilai_perolehan'] ?></td>
+                                <td><?= hitung_umur($row['tanggal_perolehan']) ?></td>
+                                <td>
+                                    <?php if ($row['nilai_perolehan'] == NULL or $row['nilai_perolehan'] == '') {
+                                        echo "0";
+                                    } else {
+                                        echo rupiah($row['nilai_perolehan']);
+                                    }
+                                    ?>
+                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -138,6 +145,23 @@ if (isset($_POST['c1'])) {
 
         return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
     }
+    function rupiah($angka)
+    {
+        $hasil = 'Rp ' . number_format($angka, 2, ",", ".");
+        return $hasil;
+    }
 
+    function hitung_umur($tanggal_lahir)
+    {
+        $birthDate = new DateTime($tanggal_lahir);
+        $today = new DateTime("today");
+        if ($birthDate > $today) {
+            exit("0 tahun 0 bulan 0 hari");
+        }
+        $y = $today->diff($birthDate)->y;
+        $m = $today->diff($birthDate)->m;
+        $d = $today->diff($birthDate)->d;
+        return $y . " tahun " . $m . " bulan " . $d . " hari";
+    }
     ?>
 </script>

@@ -91,14 +91,14 @@ include '../../templates/head.php';
                                                     $k = $koneksi->query("SELECT * FROM pi");
                                                     foreach ($k as $item) {
                                                     ?>
-                                                        <option value="<?= $item['id_pi'] ?>"><?= $item['no_pi'] ?></option>
+                                                        <option value="<?= $item['id_pi'] ?>"><?= $item['no_pi'] ?> | <?= $item['keterangan'] ?></option>
 
                                                     <?php } ?>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">No PB</label>
+                                            <label class="col-sm-2 col-form-label">No PP</label>
                                             <div class="col-sm-10">
                                                 <select class="form control select2" name="id_pp" data-placeholder="Pilih" style="width: 100%;">
                                                     <option value="0"></option>
@@ -106,7 +106,7 @@ include '../../templates/head.php';
                                                     $k = $koneksi->query("SELECT * FROM pp");
                                                     foreach ($k as $item) {
                                                     ?>
-                                                        <option value="<?= $item['id_pp'] ?>"><?= $item['no_pp'] ?></option>
+                                                        <option value="<?= $item['id_pp'] ?>"><?= $item['no_pp'] ?> | <?= $item['keterangan'] ?> </option>
 
                                                     <?php } ?>
                                                 </select>
@@ -121,14 +121,14 @@ include '../../templates/head.php';
                                                     $k = $koneksi->query("SELECT * FROM fppk");
                                                     foreach ($k as $item) {
                                                     ?>
-                                                        <option value="<?= $item['id_fppk'] ?>"><?= $item['no_fppk'] ?></option>
+                                                        <option value="<?= $item['id_fppk'] ?>"><?= $item['no_fppk'] ?> | <?= $item['uraian_kebutuhan'] ?></option>
 
                                                     <?php } ?>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">No PP</label>
+                                            <label class="col-sm-2 col-form-label">No PB</label>
                                             <div class="col-sm-10">
                                                 <select class="form control select2" name="id_pb" data-placeholder="Pilih" style="width: 100%;">
                                                     <option value="0"></option>
@@ -136,7 +136,7 @@ include '../../templates/head.php';
                                                     $k = $koneksi->query("SELECT * FROM pb");
                                                     foreach ($k as $item) {
                                                     ?>
-                                                        <option value="<?= $item['id_pb'] ?>"><?= $item['no_pb'] ?></option>
+                                                        <option value="<?= $item['id_pb'] ?>"><?= $item['no_pb'] ?> | <?= $item['keterangan'] ?></option>
 
                                                     <?php } ?>
                                                 </select>
@@ -151,7 +151,7 @@ include '../../templates/head.php';
                                                     $k = $koneksi->query("SELECT * FROM fppp");
                                                     foreach ($k as $item) {
                                                     ?>
-                                                        <option value="<?= $item['id_fppp'] ?>"><?= $item['no_fppp'] ?></option>
+                                                        <option value="<?= $item['id_fppp'] ?>"><?= $item['no_fppp'] ?> | <?= $item['keterangan'] ?></option>
 
                                                     <?php } ?>
                                                 </select>
@@ -161,6 +161,18 @@ include '../../templates/head.php';
                                             <label class="col-sm-2 col-form-label">Nama Kebutuhan</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="nama_kebutuhan">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Jumlah</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="jumlah_rh">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Satuan</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="satuan_rh">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -225,6 +237,8 @@ include '../../templates/head.php';
         $id_pp = $_POST['id_pp'];
         $id_fppp = $_POST['id_fppp'];
         $nama_kebutuhan = $_POST['nama_kebutuhan'];
+        $jumlah_rh = $_POST['jumlah_rh'];
+        $satuan_rh = $_POST['satuan_rh'];
         $rp = $_POST['rp'];
         $keterangan_rh = $_POST['keterangan_rh'];
 
@@ -239,6 +253,8 @@ include '../../templates/head.php';
         '$id_pp',
         '$id_fppp',
         '$nama_kebutuhan',
+        '$jumlah_rh',
+        '$satuan_rh',
         '$rp',
         '$keterangan_rh'
         )");

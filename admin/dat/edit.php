@@ -87,6 +87,18 @@ $row = $data->fetch_array();
                                             </div>
                                         </div>
                                         <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Jumlah</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="jumlah" value="<?= $row['jumlah'] ?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Satuan</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="satuan" value="<?= $row['satuan'] ?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">No. Register</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="no_register" value="<?= $row['no_register'] ?>">
@@ -108,12 +120,6 @@ $row = $data->fetch_array();
                                             <label class="col-sm-2 col-form-label">Tanggal Perolehan</label>
                                             <div class="col-sm-10">
                                                 <input type="date" class="form-control" name="tanggal_perolehan" value="<?= $row['tanggal_perolehan'] ?>">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Umur</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="umur" value="<?= $row['umur'] ?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -165,22 +171,24 @@ $row = $data->fetch_array();
     if (isset($_POST['submit'])) {
         $jenis_aktiva = $_POST['jenis_aktiva'];
         $nama_aktiva = $_POST['nama_aktiva'];
+        $jumlah = $_POST['jumlah'];
+        $satuan = $_POST['satuan'];
         $no_register = $_POST['no_register'];
         $lokasi1 = $_POST['lokasi1'];
         $lokasi2 = $_POST['lokasi2'];
         $tanggal_perolehan = $_POST['tanggal_perolehan'];
-        $umur = $_POST['umur'];
         $nilai_perolehan = $_POST['nilai_perolehan'];
 
 
         $submit = $koneksi->query("UPDATE aktiva_tetap SET 
         jenis_aktiva = '$jenis_aktiva',
         nama_aktiva = '$nama_aktiva',
+        jumlah = '$jumlah',
+        satuan = '$satuan',
         no_register = '$no_register',
         lokasi1 = '$lokasi1',
         lokasi2 = '$lokasi2',
         tanggal_perolehan = '$tanggal_perolehan',
-        umur = '$umur',
         nilai_perolehan = '$nilai_perolehan'
         WHERE 
         id_aktiva = '$id'

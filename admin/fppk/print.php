@@ -57,6 +57,8 @@ $bln = array(
                             <th>Tanggal</th>
                             <th>No FPPK</th>
                             <th>Uraian Kebutuhan</th>
+                            <th>Jumlah</th>
+                            <th>satuan</th>
                         </tr>
                     </thead>
                     <tbody style="background-color: white">
@@ -71,6 +73,8 @@ $bln = array(
                                 <td><?= $row['tanggal'] ?></td>
                                 <td><?= $row['no_fppk'] ?></td>
                                 <td><?= $row['uraian_kebutuhan'] ?></td>
+                                <td><?= $row['jumlah'] ?></td>
+                                <td><?= $row['satuan'] ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>

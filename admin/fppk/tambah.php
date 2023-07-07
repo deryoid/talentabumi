@@ -84,7 +84,18 @@ include '../../templates/head.php';
                                                 <textarea class="form-control" name="uraian_kebutuhan" required=""></textarea>
                                             </div>
                                         </div>
-
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Jumlah</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="jumlah" required="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Satuan</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="satuan" required="">
+                                            </div>
+                                        </div>
                                     </div>
                                     <!-- /.card-body -->
 
@@ -129,13 +140,17 @@ include '../../templates/head.php';
         $tanggal = $_POST['tanggal'];
         $no_fppk = $_POST['no_fppk'];
         $uraian_kebutuhan = $_POST['uraian_kebutuhan'];
+        $jumlah = $_POST['jumlah'];
+        $satuan = $_POST['satuan'];
 
         $submit = $koneksi->query("INSERT INTO fppk VALUES (
         NULL,
         '$departemen',
         '$tanggal',
         '$no_fppk',
-        '$uraian_kebutuhan'
+        '$uraian_kebutuhan',
+        '$jumlah',
+        '$satuan'
         )");
         // var_dump($submit, $koneksi->error);
         // die();

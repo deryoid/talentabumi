@@ -96,7 +96,7 @@ $row = $data->fetch_array();
                                                     $sd = $koneksi->query("SELECT * FROM pi ORDER BY id_pi DESC");
                                                     foreach ($sd as $item) {
                                                     ?>
-                                                        <option value="<?= $item['id_pi'] ?>" <?= $row['id_pi'] == $item['id_pi'] ? 'selected' : '' ?>><?= $item['no_pi'] ?></option>
+                                                        <option value="<?= $item['id_pi'] ?>" <?= $row['id_pi'] == $item['id_pi'] ? 'selected' : '' ?>><?= $item['no_pi'] ?>| <?= $item['keterangan'] ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -110,7 +110,7 @@ $row = $data->fetch_array();
                                                     $sd = $koneksi->query("SELECT * FROM pb ORDER BY id_pb DESC");
                                                     foreach ($sd as $item) {
                                                     ?>
-                                                        <option value="<?= $item['id_pb'] ?>" <?= $row['id_pb'] == $item['id_pb'] ? 'selected' : '' ?>><?= $item['no_pb'] ?></option>
+                                                        <option value="<?= $item['id_pb'] ?>" <?= $row['id_pb'] == $item['id_pb'] ? 'selected' : '' ?>><?= $item['no_pb'] ?>| <?= $item['keterangan'] ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -124,7 +124,7 @@ $row = $data->fetch_array();
                                                     $sd = $koneksi->query("SELECT * FROM fppk ORDER BY id_fppk DESC");
                                                     foreach ($sd as $item) {
                                                     ?>
-                                                        <option value="<?= $item['id_fppk'] ?>" <?= $row['id_fppk'] == $item['id_fppk'] ? 'selected' : '' ?>><?= $item['no_fppk'] ?></option>
+                                                        <option value="<?= $item['id_fppk'] ?>" <?= $row['id_fppk'] == $item['id_fppk'] ? 'selected' : '' ?>><?= $item['no_fppk'] ?>| <?= $item['uraian_kebutuhan'] ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -138,7 +138,7 @@ $row = $data->fetch_array();
                                                     $sd = $koneksi->query("SELECT * FROM pp ORDER BY id_pp DESC");
                                                     foreach ($sd as $item) {
                                                     ?>
-                                                        <option value="<?= $item['id_pp'] ?>" <?= $row['id_pp'] == $item['id_pp'] ? 'selected' : '' ?>><?= $item['no_pp'] ?></option>
+                                                        <option value="<?= $item['id_pp'] ?>" <?= $row['id_pp'] == $item['id_pp'] ? 'selected' : '' ?>><?= $item['no_pp'] ?>| <?= $item['keterangan'] ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -152,7 +152,7 @@ $row = $data->fetch_array();
                                                     $sd = $koneksi->query("SELECT * FROM fppp ORDER BY id_fppp DESC");
                                                     foreach ($sd as $item) {
                                                     ?>
-                                                        <option value="<?= $item['id_fppp'] ?>" <?= $row['id_fppp'] == $item['id_fppp'] ? 'selected' : '' ?>><?= $item['no_fppp'] ?></option>
+                                                        <option value="<?= $item['id_fppp'] ?>" <?= $row['id_fppp'] == $item['id_fppp'] ? 'selected' : '' ?>><?= $item['no_fppp'] ?> | <?= $item['keterangan'] ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -161,6 +161,18 @@ $row = $data->fetch_array();
                                             <label class="col-sm-2 col-form-label">Nama Kebutuhan</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="nama_kebutuhan" value="<?= $row['nama_kebutuhan'] ?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Jumlah</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="jumlah_rh" value="<?= $row['jumlah_rh'] ?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Satuan</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="satuan_rh" value="<?= $row['satuan_rh'] ?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -225,6 +237,8 @@ $row = $data->fetch_array();
         $id_pp = $_POST['id_pp'];
         $id_fppp = $_POST['id_fppp'];
         $nama_kebutuhan = $_POST['nama_kebutuhan'];
+        $jumlah_rh = $_POST['jumlah_rh'];
+        $satuan_rh = $_POST['satuan_rh'];
         $rp = $_POST['rp'];
         $keterangan_rh = $_POST['keterangan_rh'];
 
@@ -239,6 +253,8 @@ $row = $data->fetch_array();
         id_pp = '$id_pp',
         id_fppp = '$id_fppp',
         nama_kebutuhan = '$nama_kebutuhan',
+        jumlah_rh = '$jumlah_rh',
+        satuan_rh = '$satuan_rh',
         rp = '$rp',
         keterangan_rh = '$keterangan_rh'
         WHERE 

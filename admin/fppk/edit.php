@@ -88,7 +88,18 @@ $row = $data->fetch_array();
                                                 <textarea class="form-control" name="uraian_kebutuhan"><?= $row['uraian_kebutuhan'] ?></textarea>
                                             </div>
                                         </div>
-
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Jumlah</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="jumlah" value="<?= $row['jumlah'] ?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Satuan</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="satuan" value="<?= $row['satuan'] ?>">
+                                            </div>
+                                        </div>
 
 
                                     </div>
@@ -134,13 +145,16 @@ $row = $data->fetch_array();
         $tanggal = $_POST['tanggal'];
         $no_fppk = $_POST['no_fppk'];
         $uraian_kebutuhan = $_POST['uraian_kebutuhan'];
-
+        $jumlah = $_POST['jumlah'];
+        $satuan = $_POST['satuan'];
 
         $submit = $koneksi->query("UPDATE fppk SET 
         departemen = '$departemen',
         tanggal = '$tanggal',
         no_fppk = '$no_fppk',
-        uraian_kebutuhan = '$uraian_kebutuhan'
+        uraian_kebutuhan = '$uraian_kebutuhan',
+        jumlah = '$jumlah',
+        satuan = '$satuan'
         WHERE 
         id_fppk = '$id'
         ");

@@ -73,6 +73,8 @@ include '../../templates/head.php';
                                                     <th>No</th>
                                                     <th>Departemen</th>
                                                     <th>Nama Aktiva Tetap</th>
+                                                    <th>Jumlah</th>
+                                                    <th>Satuan</th>
                                                     <th>No Register</th>
                                                     <th>Lokasi 1</th>
                                                     <th>Lokasi 2</th>
@@ -82,30 +84,39 @@ include '../../templates/head.php';
                                                     <th>Opsi</th>
                                                 </tr>
                                             </thead>
-                                            <tbody style="background-color: white">
-                                                <?php
-                                                $no = 1;
-                                                $data = $koneksi->query("SELECT * FROM aktiva_tetap ORDER BY id_aktiva ASC");
-                                                while ($row = $data->fetch_array()) {
-                                                ?>
+                                            <?php
+                                            $no = 1;
+                                            $data = $koneksi->query("SELECT * FROM aktiva_tetap ORDER BY id_aktiva ASC");
+                                            while ($row = $data->fetch_array()) {
+                                            ?>
+                                                <tbody style="background-color: white">
                                                     <tr>
                                                         <td align="center"><?= $no++ ?></td>
                                                         <td><?= $row['jenis_aktiva'] ?></td>
                                                         <td><?= $row['nama_aktiva'] ?></td>
+                                                        <td><?= $row['jumlah'] ?></td>
+                                                        <td><?= $row['satuan'] ?></td>
                                                         <td><?= $row['no_register'] ?></td>
                                                         <td><?= $row['lokasi1'] ?></td>
                                                         <td><?= $row['lokasi2'] ?></td>
                                                         <td><?= $row['tanggal_perolehan'] ?></td>
-                                                        <td><?= $row['umur'] ?></td>
-                                                        <td><?= $row['nilai_perolehan'] ?></td>
+                                                        <td><?= hitung_umur($row['tanggal_perolehan']) ?></td>
+                                                        <td>
+                                                            <?php if ($row['nilai_perolehan'] == NULL or $row['nilai_perolehan'] == '') {
+                                                                echo "0";
+                                                            } else {
+                                                                echo rupiah($row['nilai_perolehan']);
+                                                            }
+                                                            ?>
+                                                        </td>
                                                         <td align="center">
                                                             <a href="edit?id=<?= $row['id_aktiva'] ?>" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i> Edit</a>
                                                             <a href="hapus?id=<?= $row['id_aktiva'] ?>" class="btn btn-danger btn-sm alert-hapus" title="Hapus"><i class="fa fa-trash"></i> Hapus</a>
 
                                                         </td>
                                                     </tr>
-                                                <?php } ?>
-                                            </tbody>
+                                                </tbody>
+                                            <?php } ?>
                                         </table>
                                     </div>
 
@@ -134,7 +145,26 @@ include '../../templates/head.php';
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <?php include_once "../../templates/script.php"; ?>
+    <?php include_once "../../templates/script.php";
+    function rupiah($angka)
+    {
+        $hasil = 'Rp ' . number_format($angka, 2, ",", ".");
+        return $hasil;
+    }
+
+    function hitung_umur($tanggal_lahir)
+    {
+        $birthDate = new DateTime($tanggal_lahir);
+        $today = new DateTime("today");
+        if ($birthDate > $today) {
+            exit("0 tahun 0 bulan 0 hari");
+        }
+        $y = $today->diff($birthDate)->y;
+        $m = $today->diff($birthDate)->m;
+        $d = $today->diff($birthDate)->d;
+        return $y . " tahun " . $m . " bulan " . $d . " hari";
+    }
+    ?>
 
     <script>
         $(document).on('click', '[data-toggle="lightbox"]', function(event) {

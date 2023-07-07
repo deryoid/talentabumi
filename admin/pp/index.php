@@ -74,6 +74,8 @@ include '../../templates/head.php';
                                                     <th>Tanggal</th>
                                                     <th>No PP</th>
                                                     <th>Keterangan</th>
+                                                    <th>Jumlah</th>
+                                                    <th>Satuan</th>
                                                     <th>Opsi</th>
                                                 </tr>
                                             </thead>
@@ -88,6 +90,8 @@ include '../../templates/head.php';
                                                         <td><?= $row['tanggal_permintaan'] ?></td>
                                                         <td><?= $row['no_pp'] ?></td>
                                                         <td><?= $row['keterangan'] ?></td>
+                                                        <td><?= $row['jumlah'] ?></td>
+                                                        <td><?= $row['satuan'] ?></td>
                                                         <td align="center">
                                                             <a href="edit?id=<?= $row['id_pp'] ?>" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i> Edit</a>
                                                             <a href="hapus?id=<?= $row['id_pp'] ?>" class="btn btn-danger btn-sm alert-hapus" title="Hapus"><i class="fa fa-trash"></i> Hapus</a>
