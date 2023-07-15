@@ -20,6 +20,10 @@ $bln = array(
 );
 if (isset($_POST['c1'])) {
     $lokasi_rh = $_POST['lokasi_rh'];
+    $departemen_rh = $_POST['departemen_rh'];
+    $nama_kebutuhan = $_POST['nama_kebutuhan'];
+    $tgl1 = $_POST['tgl1'];
+    $tgl2 = $_POST['tgl2'];
 }
 
 ?>
@@ -80,7 +84,12 @@ if (isset($_POST['c1'])) {
                                                 LEFT JOIN pb AS tpb ON rh.id_pb = tpb.id_pb
                                                 LEFT JOIN fppk AS tfppk ON rh.id_fppk = tfppk.id_fppk
                                                 LEFT JOIN fppp AS tfppp ON rh.id_fppp = tfppp.id_fppp
-                                                WHERE lokasi_rh = '$lokasi_rh'");
+                                                WHERE 
+                                                lokasi_rh = '$lokasi_rh' AND
+                                                departemen_rh = '$departemen_rh' AND 
+                                                (tanggal_pembuatan BETWEEN '$tgl1' AND '$tgl2') AND
+                                                nama_kebutuhan = '$nama_kebutuhan'
+                                                ");
                         while ($row = $data->fetch_array()) {
                         ?>
                             <tr>
@@ -127,7 +136,12 @@ if (isset($_POST['c1'])) {
                                   LEFT JOIN pb AS tpb ON rh.id_pb = tpb.id_pb
                                   LEFT JOIN fppk AS tfppk ON rh.id_fppk = tfppk.id_fppk
                                   LEFT JOIN fppp AS tfppp ON rh.id_fppp = tfppp.id_fppp
-                                  WHERE lokasi_rh = '$lokasi_rh'")->fetch_array();
+                                  WHERE 
+                                  lokasi_rh = '$lokasi_rh' AND
+                                  departemen_rh = '$departemen_rh' AND 
+                                                (tanggal_pembuatan BETWEEN '$tgl1' AND '$tgl2') AND
+                                                nama_kebutuhan = '$nama_kebutuhan'
+                                  ")->fetch_array();
 
                                 ?>
                                 <b>
@@ -157,7 +171,10 @@ if (isset($_POST['c1'])) {
             <br>
             <br>
             <br>
-            ...........
+            <?php
+            $ttd = $koneksi->query("SELECT * FROM ttd")->fetch_array();
+            echo $ttd['nama_ketua'];
+            ?>
         </h5>
 
     </div>

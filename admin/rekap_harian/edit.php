@@ -91,7 +91,7 @@ $row = $data->fetch_array();
                                             <label class="col-sm-2 col-form-label">No PI</label>
                                             <div class="col-sm-10">
                                                 <select class="form control select2" name="id_pi" id="id_pi" data-placeholder="Pilih" style="width: 100%;">
-                                                    <option value="0"></option>
+                                                    <option value="0">Tidak Ada</option>
                                                     <?php
                                                     $sd = $koneksi->query("SELECT * FROM pi ORDER BY id_pi DESC");
                                                     foreach ($sd as $item) {
@@ -105,7 +105,7 @@ $row = $data->fetch_array();
                                             <label class="col-sm-2 col-form-label">No PB</label>
                                             <div class="col-sm-10">
                                                 <select class="form control select2" name="id_pb" id="id_pb" data-placeholder="Pilih" style="width: 100%;">
-                                                    <option value="0"></option>
+                                                    <option value="0">Tidak Ada</option>
                                                     <?php
                                                     $sd = $koneksi->query("SELECT * FROM pb ORDER BY id_pb DESC");
                                                     foreach ($sd as $item) {
@@ -119,7 +119,7 @@ $row = $data->fetch_array();
                                             <label class="col-sm-2 col-form-label">No FPPK</label>
                                             <div class="col-sm-10">
                                                 <select class="form control select2" name="id_fppk" id="id_fppk" data-placeholder="Pilih" style="width: 100%;">
-                                                    <option value="0"></option>
+                                                    <option value="0">Tidak Ada</option>
                                                     <?php
                                                     $sd = $koneksi->query("SELECT * FROM fppk ORDER BY id_fppk DESC");
                                                     foreach ($sd as $item) {
@@ -133,7 +133,7 @@ $row = $data->fetch_array();
                                             <label class="col-sm-2 col-form-label">No PP</label>
                                             <div class="col-sm-10">
                                                 <select class="form control select2" name="id_pp" id="id_pp" data-placeholder="Pilih" style="width: 100%;">
-                                                    <option value="0"></option>
+                                                    <option value="0">Tidak Ada</option>
                                                     <?php
                                                     $sd = $koneksi->query("SELECT * FROM pp ORDER BY id_pp DESC");
                                                     foreach ($sd as $item) {
@@ -147,7 +147,7 @@ $row = $data->fetch_array();
                                             <label class="col-sm-2 col-form-label">No FPPP</label>
                                             <div class="col-sm-10">
                                                 <select class="form control select2" name="id_fppp" id="id_fppp" data-placeholder="Pilih" style="width: 100%;">
-                                                    <option value="0"></option>
+                                                    <option value="0">Tidak Ada</option>
                                                     <?php
                                                     $sd = $koneksi->query("SELECT * FROM fppp ORDER BY id_fppp DESC");
                                                     foreach ($sd as $item) {

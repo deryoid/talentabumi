@@ -89,7 +89,10 @@ $bln = array(
             <br>
             <br>
             <br>
-            ...........
+            <?php
+            $ttd = $koneksi->query("SELECT * FROM ttd")->fetch_array();
+            echo $ttd['nama_ketua'];
+            ?>
         </h5>
 
     </div>

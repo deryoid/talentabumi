@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Waktu pembuatan: 07 Jul 2023 pada 13.41
+-- Waktu pembuatan: 15 Jul 2023 pada 03.02
 -- Versi server: 5.7.34
 -- Versi PHP: 7.4.21
 
@@ -46,7 +46,7 @@ CREATE TABLE `aktiva_tetap` (
 
 INSERT INTO `aktiva_tetap` (`id_aktiva`, `jenis_aktiva`, `nama_aktiva`, `no_register`, `lokasi1`, `lokasi2`, `tanggal_perolehan`, `nilai_perolehan`, `jumlah`, `satuan`) VALUES
 (14, 'HSE', 'Hard Disk External 1 TB (SIAGATE)', '001', 'Kantor Marabahan', '-', '2023-02-02', '1000000', '1', 'Pcs'),
-(15, 'HRGA', 'Komputer Desktop', '002', 'Kantor Liang Anggang', '-', '2023-02-02', '1000000', '', ''),
+(15, 'HRGA', 'Tandon Air 1.100 L (GRAND)', '002', 'Kantor Liang Anggang', '-', '2023-02-02', '1000000', '', ''),
 (16, 'LOGISTIK', 'Komputer (ACER ASPIRATE 4750- 2312G50MN)', '003', 'Kantor Marabahan', '-', '2023-02-02', '1000000', '', ''),
 (17, 'HRGA', 'Laptop (TOSHIBA SATELITE L645 1101)', '004', 'Kantor Liang Anggang', '-', '2023-02-02', '1000000', '', ''),
 (18, 'HRGA', 'Software WIN XP Professional SP3', '005', 'Kantor Liang Anggang', '-', '2023-02-02', '1000000', '', ''),
@@ -77,7 +77,7 @@ CREATE TABLE `fppk` (
 --
 
 INSERT INTO `fppk` (`id_fppk`, `departemen`, `tanggal`, `no_fppk`, `uraian_kebutuhan`, `jumlah`, `satuan`) VALUES
-(2, 'HSE', '2023-01-02', '001', 'Papan Tulis Kaca Ukuran 70x100 CM \r\n', '4', 'pcs'),
+(2, 'HSE', '2021-01-01', '001', 'Papan Tulis Kaca Ukuran 70x100 CM \r\n', '4', 'pcs'),
 (3, 'HRGA', '2023-01-03', '002', 'Upah Tukang Pembuatan Gudang Besi Bekas Samping Ruang Genset', '', ''),
 (4, 'HRGA', '2023-01-04', '003', 'Komsumsi Kegiatan Savety Talk Periode 03 Januari 2023', '', ''),
 (5, 'PLANT', '2023-01-05', '004', 'Binder Clips No 105 (2 Box), Binder Clips No 111 (2 Box), Tisu (10 Pcs) & Penghapus Papan Tulis White Board (2 Pcs)', '', ''),
@@ -296,9 +296,27 @@ CREATE TABLE `rekap_harian` (
 --
 
 INSERT INTO `rekap_harian` (`id_rh`, `lokasi_rh`, `tanggal_pembuatan`, `departemen_rh`, `id_pi`, `id_pb`, `id_fppk`, `id_pp`, `id_fppp`, `nama_kebutuhan`, `jumlah_rh`, `satuan_rh`, `rp`, `keterangan_rh`) VALUES
-(81, 'MARABAHAN', '2023-01-02', 'HSE', 0, 0, 2, 25, 0, 'Papan Tulis Kaca Ukuran 70x100 CM ', '4', 'Pcs', '200000', 'Untuk Keperluan Dept. HSE'),
+(81, 'MARABAHAN', '2023-01-02', 'HSE', 0, 0, 0, 0, 0, 'Papan Tulis Kaca Ukuran 70x100 CM ', '4', 'Pcs', '200000', 'Untuk Keperluan Dept. HSE'),
 (82, 'LIANG ANGGANG', '2023-01-02', 'LOGISTIK', 0, 2, 0, 26, 0, 'Element Filter AC LV (8 Pcs)', '8', 'Pcs', '300000', 'Untuk Keperluan Dept. Logistik'),
 (83, 'MARABAHAN', '2023-07-07', 'Logistik', 12, 0, 0, 0, 0, 'Komputer', '1', 'Set', '3500000', '-');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ttd`
+--
+
+CREATE TABLE `ttd` (
+  `id_ttd` int(11) NOT NULL,
+  `nama_ketua` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `ttd`
+--
+
+INSERT INTO `ttd` (`id_ttd`, `nama_ketua`) VALUES
+(1, 'Nadin Amizah');
 
 -- --------------------------------------------------------
 
@@ -384,6 +402,12 @@ ALTER TABLE `rekap_harian`
   ADD PRIMARY KEY (`id_rh`);
 
 --
+-- Indeks untuk tabel `ttd`
+--
+ALTER TABLE `ttd`
+  ADD PRIMARY KEY (`id_ttd`);
+
+--
 -- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
@@ -446,6 +470,12 @@ ALTER TABLE `pp`
 --
 ALTER TABLE `rekap_harian`
   MODIFY `id_rh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+
+--
+-- AUTO_INCREMENT untuk tabel `ttd`
+--
+ALTER TABLE `ttd`
+  MODIFY `id_ttd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

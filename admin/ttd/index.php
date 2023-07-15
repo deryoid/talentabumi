@@ -30,12 +30,12 @@ include '../../templates/head.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">PP</h1>
+                            <h1 class="m-0 text-dark">Ketua KPU</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Beranda</a></li>
-                                <li class="breadcrumb-item active">PP</li>
+                                <li class="breadcrumb-item active">Pimpinan</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -49,10 +49,7 @@ include '../../templates/head.php';
                     <div class="row">
                         <div class="col-12">
                             <div class="card card-primary card-outline">
-                                <div class="card-header">
-                                    <a href="tambah" class="btn bg-primary"><i class="fa fa-plus-circle"> Tambah Data</i></a>
-                                    <a href="#" data-toggle="modal" data-target="#pp" class="btn bg-info"><i class="fa fa-print"> Cetak</i></a>
-                                </div>
+
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <?php
@@ -71,30 +68,21 @@ include '../../templates/head.php';
                                             <thead class="bg-primary">
                                                 <tr align="center">
                                                     <th>No</th>
-                                                    <th>Tanggal</th>
-                                                    <th>No PP</th>
-                                                    <th>Keterangan</th>
-                                                    <th>Jumlah</th>
-                                                    <th>Satuan</th>
+                                                    <th>Nama Pimpinan</th>
                                                     <th>Opsi</th>
                                                 </tr>
                                             </thead>
                                             <tbody style="background-color: white">
                                                 <?php
                                                 $no = 1;
-                                                $data = $koneksi->query("SELECT * FROM pp ORDER BY id_pp ASC");
+                                                $data = $koneksi->query("SELECT * FROM ttd");
                                                 while ($row = $data->fetch_array()) {
                                                 ?>
                                                     <tr>
                                                         <td align="center"><?= $no++ ?></td>
-                                                        <td><?= $row['tanggal_permintaan'] ?></td>
-                                                        <td><?= $row['no_pp'] ?></td>
-                                                        <td><?= $row['keterangan'] ?></td>
-                                                        <td><?= $row['jumlah'] ?></td>
-                                                        <td><?= $row['satuan'] ?></td>
+                                                        <td><?= $row['nama_ketua'] ?></td>
                                                         <td align="center">
-                                                            <a href="edit?id=<?= $row['id_pp'] ?>" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i> Edit</a>
-                                                            <a href="hapus?id=<?= $row['id_pp'] ?>" class="btn btn-danger btn-sm alert-hapus" title="Hapus"><i class="fa fa-trash"></i> Hapus</a>
+                                                            <a href="edit?id=<?= $row['id_ttd'] ?>" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i></a>
 
                                                         </td>
                                                     </tr>
@@ -142,27 +130,26 @@ include '../../templates/head.php';
 </body>
 
 </html>
-<!-- MODAL LAPORAN -->
-<div id="pp" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<!-- MODAL LAPORAN SURAT MASUK -->
+<div id="rekap_harian" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> -->
-                <h4 class="modal-title">PP</h4>
+                <h4 class="modal-title">Rekap Harian</h4>
             </div>
             <div class="modal-body">
 
                 <!-- kategori -->
-                <label style="font-size: 15px; font-style: bold;">Tahun</label>
-                <form method="POST" target="blank" action="<?= base_url('admin/fppk/print.php') ?>">
+                <label style="font-size: 15px; font-style: bold;">Berdasarkan Lokasi</label>
+                <form method="POST" target="blank" action="<?= base_url('admin/rekap_harian/print.php') ?>">
                     <div class="row">
                         <div class="col-md-8">
                             <div class="form-group">
-                                <select class="form-control" data-placeholder="Pilih" name="tahun" required="">
+                                <select class="form-control" data-placeholder="Pilih" name="lokasi_rh" required="">
                                     <option value="">-Pilih-</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
+                                    <option value="MARABAHAN">MARABAHAN</option>
+                                    <option value="LIANG ANGGANG">LIANG ANGGANG</option>
                                 </select>
                             </div>
                         </div>

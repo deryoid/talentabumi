@@ -103,7 +103,10 @@ if (isset($_POST['c1'])) {
             <br>
             <br>
             <br>
-            ...........
+            <?php
+            $ttd = $koneksi->query("SELECT * FROM ttd")->fetch_array();
+            echo $ttd['nama_ketua'];
+            ?>
         </h5>
 
     </div>

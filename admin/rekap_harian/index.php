@@ -204,7 +204,7 @@ include '../../templates/head.php';
                 <label style="font-size: 15px; font-style: bold;">Berdasarkan Lokasi</label>
                 <form method="POST" target="blank" action="<?= base_url('admin/rekap_harian/print.php') ?>">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <select class="form-control" data-placeholder="Pilih" name="lokasi_rh" required="">
                                     <option value="">-Pilih-</option>
@@ -212,10 +212,51 @@ include '../../templates/head.php';
                                     <option value="LIANG ANGGANG">LIANG ANGGANG</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-md-4">
+
+
                             <div class="form-group">
-                                <button type="submit" name="c1" class="btn btn-info waves-effect waves-light m-l-10 btn-md"><i class="mdi mdi-printer"></i> Cetak</button>
+                                <select class="form-control" data-placeholder="Pilih" name="departemen_rh" required="">
+                                    <option value="">-Pilih-</option>
+                                    <option value="HRGA">HRGA</option>
+                                    <option value="ENG">ENG</option>
+                                    <option value="HRM">HRM</option>
+                                    <option value="HSE">HSE</option>
+                                    <option value="CSR">CSR</option>
+                                    <option value="PLAN">PLAN</option>
+                                    <option value="PORT">PORT</option>
+                                    <option value="LOGISTIK">LOGISTIK</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <select class="form control select2" name="nama_kebutuhan" data-placeholder="Pilih" style="width: 100%;">
+                                    <option value="0"></option>
+                                    <?php
+                                    $k = $koneksi->query("SELECT nama_kebutuhan FROM rekap_harian GROUP BY nama_kebutuhan");
+                                    foreach ($k as $item) {
+                                    ?>
+                                        <option value="<?= $item['nama_kebutuhan'] ?>"><?= $item['nama_kebutuhan'] ?></option>
+
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="date" name="tgl1" class="form-control" required="" value="<?php echo $date_old; ?>">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="date" name="tgl2" class="form-control" required="" value="<?php echo $date_now; ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="submit" name="c1" class="btn btn-info waves-effect waves-light m-l-10 btn-md"><i class="mdi mdi-printer"></i> Cetak</button>
+                                </div>
                             </div>
                         </div>
                     </div>

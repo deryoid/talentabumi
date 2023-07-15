@@ -20,6 +20,9 @@ $bln = array(
 );
 if (isset($_POST['c1'])) {
     $jenis_aktiva = $_POST['jenis_aktiva'];
+    $nama_aktiva = $_POST['nama_aktiva'];
+    $tgl1 = $_POST['tgl1'];
+    $tgl2 = $_POST['tgl2'];
 }
 
 ?>
@@ -48,6 +51,7 @@ if (isset($_POST['c1'])) {
             <br>
             <hr size="1px" color="black">
             <h3 style="text-align:center;">DAFTAR AKTIVA TETAP : <?= $jenis_aktiva; ?></h3>
+            <h3 style="text-align:center;">Tanggal : <?= tgl_indo($tgl1); ?> s/d <?= tgl_indo($tgl2); ?> </h3>
         </b></p>
     <div class="row">
         <div class="col-sm-12">
@@ -71,7 +75,12 @@ if (isset($_POST['c1'])) {
                         $no = 1;
                         $data = $koneksi->query("SELECT * FROM
                         aktiva_tetap
-                        WHERE jenis_aktiva = '$jenis_aktiva'");
+                        WHERE 
+                        jenis_aktiva = '$jenis_aktiva' AND 
+                        (tanggal_perolehan BETWEEN '$tgl1' AND '$tgl2') AND
+                        nama_aktiva = '$nama_aktiva';
+                        
+                        ");
                         while ($row = $data->fetch_array()) {
                         ?>
                             <tr>
@@ -93,6 +102,24 @@ if (isset($_POST['c1'])) {
                                 </td>
                             </tr>
                         <?php } ?>
+                        <tr>
+                            <th colspan="8" align="right">
+                                <?php
+                                $data = $koneksi->query("SELECT SUM(nilai_perolehan) AS total FROM aktiva_tetap 
+                                 WHERE 
+                        jenis_aktiva = '$jenis_aktiva' AND 
+                        (tanggal_perolehan BETWEEN '$tgl1' AND '$tgl2') AND
+                        nama_aktiva = '$nama_aktiva'")->fetch_array();
+
+                                ?>
+                                <b>
+                                    Total :
+                                </b>
+                            </th>
+                            <th colspan="1" align="left">
+                                <b><?= rupiah($data['total']) ?></b>
+                            </th>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -110,7 +137,10 @@ if (isset($_POST['c1'])) {
             <br>
             <br>
             <br>
-            ...........
+            <?php
+            $ttd = $koneksi->query("SELECT * FROM ttd")->fetch_array();
+            echo $ttd['nama_ketua'];
+            ?>
         </h5>
 
     </div>

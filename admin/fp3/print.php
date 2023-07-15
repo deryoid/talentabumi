@@ -18,7 +18,9 @@ $bln = array(
     '11' => 'November',
     '12' => 'Desember'
 );
-
+if (isset($_POST['c1'])) {
+    $tahun = $_POST['tahun'];
+}
 ?>
 
 <script type="text/javascript">
@@ -44,7 +46,7 @@ $bln = array(
             </font>
             <br>
             <hr size="1px" color="black">
-            <font size="5"><u>Permohonan Perbaikan & Perawatan</u></font>
+            <font size="5"><u>Permohonan Perbaikan & Perawatan Tahun <?= $tahun; ?></u></font>
         </b></p>
     <div class="row">
         <div class="col-sm-12">
@@ -61,7 +63,7 @@ $bln = array(
                     <tbody style="background-color: white">
                         <?php
                         $no = 1;
-                        $data = $koneksi->query("SELECT * FROM fppp ORDER BY id_fppp ASC");
+                        $data = $koneksi->query("SELECT * FROM fppp WHERE YEAR(tanggal_permintaan) = '$tahun'");
                         while ($row = $data->fetch_array()) {
                         ?>
                             <tr>
@@ -88,7 +90,10 @@ $bln = array(
             <br>
             <br>
             <br>
-            ...........
+            <?php
+            $ttd = $koneksi->query("SELECT * FROM ttd")->fetch_array();
+            echo $ttd['nama_ketua'];
+            ?>
         </h5>
 
     </div>

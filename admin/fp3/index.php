@@ -51,7 +51,7 @@ include '../../templates/head.php';
                             <div class="card card-primary card-outline">
                                 <div class="card-header">
                                     <a href="tambah" class="btn bg-primary"><i class="fa fa-plus-circle"> Tambah Data</i></a>
-                                    <a href="print" target="blank" class="btn bg-info"><i class="fa fa-print"> Cetak</i></a>
+                                    <a href="#" data-toggle="modal" data-target="#fp3" class="btn bg-info"><i class="fa fa-print"> Cetak</i></a>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -138,3 +138,44 @@ include '../../templates/head.php';
 </body>
 
 </html>
+<!-- MODAL LAPORAN -->
+<div id="fp3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> -->
+                <h4 class="modal-title">FP3</h4>
+            </div>
+            <div class="modal-body">
+
+                <!-- kategori -->
+                <label style="font-size: 15px; font-style: bold;">Tahun</label>
+                <form method="POST" target="blank" action="<?= base_url('admin/fp3/print.php') ?>">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" data-placeholder="Pilih" name="tahun" required="">
+                                    <option value="">-Pilih-</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <button type="submit" name="c1" class="btn btn-info waves-effect waves-light m-l-10 btn-md"><i class="mdi mdi-printer"></i> Cetak</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- end kategori -->
+
+            </div><!-- modal body -->
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal"><i class="mdi mdi-close"></i> Batal</button>
+            </div>
+        </div>
+    </div>
+</div>
