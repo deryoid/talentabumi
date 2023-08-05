@@ -51,7 +51,8 @@ include '../../templates/head.php';
                             <div class="card card-primary card-outline">
                                 <div class="card-header">
                                     <a href="tambah" class="btn bg-primary"><i class="fa fa-plus-circle"> Tambah Data</i></a>
-                                    <a href="#" data-toggle="modal" data-target="#fppk"  class="btn bg-info"><i class="fa fa-print"> Cetak</i></a>
+                                    <a href="#" data-toggle="modal" data-target="#fppk" class="btn bg-info"><i class="fa fa-print"> Cetak</i></a>
+                                    <a href="akumulasi" target="blank" class="btn bg-warning"><i class="fa fa-chart-area"> Akumulasi</i></a>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">

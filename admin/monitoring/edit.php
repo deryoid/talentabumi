@@ -104,7 +104,7 @@ $row = $data->fetch_array();
                                             <label class="col-sm-2 col-form-label">Status Monitoring</label>
                                             <div class="col-sm-10">
                                                 <select class="form-control" data-placeholder="Pilih" name="status">
-                                                    <option value="<?= $row['status'] ?>"><?= $row['lokasi_rh'] ?></option>
+                                                    <option value="<?= $row['status'] ?>"><?= $row['status'] ?></option>
                                                     <option value="PEMELIHARAAN">PEMELIHARAAN</option>
                                                     <option value="KERUSAKAN">KERUSAKAN</option>
                                                     <option value="PENGHAPUSAN">PENGHAPUSAN</option>
@@ -171,7 +171,7 @@ $row = $data->fetch_array();
 
         if ($submit) {
             $_SESSION['pesan'] = "Data Berhasil Diubah";
-            echo "<script>window.location.replace('../monitoring/');</script>";
+            echo "<script>window.location.replace('telegram?id=" . $id . "');</script>";
         }
     }
 

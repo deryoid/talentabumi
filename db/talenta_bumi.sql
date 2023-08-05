@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Waktu pembuatan: 15 Jul 2023 pada 03.02
+-- Waktu pembuatan: 05 Agu 2023 pada 01.47
 -- Versi server: 5.7.34
 -- Versi PHP: 7.4.21
 
@@ -190,7 +190,7 @@ CREATE TABLE `pb` (
 
 INSERT INTO `pb` (`id_pb`, `tanggal_permintaan`, `no_pb`, `keterangan`, `jumlah`, `satuan`) VALUES
 (2, '2023-01-02', '001/GA/I/23', 'Element Filter AC LV ', '8', 'Pcs'),
-(3, '2023-01-03', '002/GA/I/23', 'Bohlam Philips (2 Pcs)', NULL, NULL),
+(3, '2023-01-03', '002/GA/I/23', 'Bohlam Philips (2 Pcs)', '5', ''),
 (4, '2023-01-04', '003/GA/I/23', 'Stabilizer LH (2 Pcs)', NULL, NULL),
 (5, '2023-01-05', '004/GA/I/23', 'Engine Mounting LH/RH (2 Pcs)', NULL, NULL),
 (6, '2023-01-06', '005/GA/I/23', 'Transmisi Mounting (2 Pcs)', NULL, NULL),
@@ -220,14 +220,14 @@ CREATE TABLE `pi` (
 --
 
 INSERT INTO `pi` (`id_pi`, `tanggal_permintaan`, `no_pi`, `keterangan`, `jumlah`, `satuan`) VALUES
-(12, '2023-01-02', '001/TB/PI/SMD/I/2023', 'Hard Disk External 1 TB (SIAGATE)', '1', 'Pcs'),
-(13, '2023-01-02', '002/TB/PI/SMD/I/2023', 'Komputer Desktop', '', ''),
+(12, '2023-01-02', '001/TB/PI/SMD/I/2023', 'Hard Disk External 1 TB (SIAGATE)', '2', 'Pcs'),
+(13, '2023-01-02', '002/TB/PI/SMD/I/2023', 'Komputer Desktop', '4', ''),
 (14, '2023-01-02', '003/TB/PI/SMD/I/2023', 'Komputer (ACER ASPIRATE 4750- 2312G50MN)', '', ''),
 (15, '2023-01-02', '004/TB/PI/SMD/I/2023', 'Laptop (TOSHIBA SATELITE L645 1101)', '', ''),
 (16, '2023-01-02', '005/TB/PI/SMD/I/2023', 'Software WIN XP Professional SP3', '', ''),
 (17, '2023-01-04', '006/TB/PI/SMD/I/2023', 'Mesin Pompa Air (NS-100+KOYO 22H)', '', ''),
 (18, '2023-01-04', '007/TB/PI/SMD/I/2023', 'Tandon Air 1.100 L (GRAND)', '', ''),
-(19, '2023-01-05', '008/TB/PI/SMD/I/2023', 'Container', '', ''),
+(19, '2023-01-05', '008/TB/PI/SMD/I/2023', 'Container', '5', ''),
 (20, '2023-01-11', '009/TB/PI/SMD/I/2023', 'Tandon Air 3.300 L', '', ''),
 (21, '2023-01-13', '010/TB/PI/SMD/I/2023', 'Meja Meeting (BCT 106)', '', '');
 
@@ -252,9 +252,9 @@ CREATE TABLE `pp` (
 
 INSERT INTO `pp` (`id_pp`, `tanggal_permintaan`, `no_pp`, `keterangan`, `jumlah`, `satuan`) VALUES
 (25, '2023-01-02', '001', 'Papan Tulis Kaca Ukuran 70x100 CM Untuk Keperluan Dept. ENG', '4', 'Pcs'),
-(26, '2023-01-02', '002', 'Element Filter AC LV (8 Pcs) Untuk Keperluan Dept. HRGA', '', ''),
-(27, '2023-01-02', '003', 'Hard Disk External 1 TB (SIAGATE) Untuk Keperluan Dept. HSE', '', ''),
-(28, '2023-01-02', '004', 'Komputer Desktop Untuk Keperluan Admin Baru Dept. PORT', '', ''),
+(26, '2023-01-02', '002', 'Element Filter AC LV (8 Pcs) Untuk Keperluan Dept. HRGA', '6', ''),
+(27, '2023-01-02', '003', 'Hard Disk External 1 TB (SIAGATE) Untuk Keperluan Dept. HSE', '7', ''),
+(28, '2023-01-02', '004', 'Komputer Desktop Untuk Keperluan Admin Baru Dept. PORT', '8', ''),
 (29, '2023-01-02', '005', 'Komputer (ACER ASPIRATE 4750- 2312G50MN) Untuk Keperluan Dept. LOGISTIK', '', ''),
 (30, '2023-01-02', '006', 'Laptop (TOSHIBA SATELITE L645 1101) Untuk Keperluan Manager Dept. HRGA', '', ''),
 (31, '2023-01-02', '007', 'Softrware WIN XP Professional SP3 Untuk Keperluan Dept. HRGA', '', ''),
