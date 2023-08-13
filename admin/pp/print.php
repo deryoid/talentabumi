@@ -60,6 +60,7 @@ if (isset($_POST['c1'])) {
                             <th>Keterangan</th>
                             <th>Jumlah</th>
                             <th>Satuan</th>
+                            <th>Harga</th>
                         </tr>
                     </thead>
                     <tbody style="background-color: white">
@@ -75,6 +76,7 @@ if (isset($_POST['c1'])) {
                                 <td><?= $row['keterangan'] ?></td>
                                 <td><?= $row['jumlah'] ?></td>
                                 <td><?= $row['satuan'] ?></td>
+                                <td><?= rupiah($row['jumlah_pp']) ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -132,6 +134,10 @@ if (isset($_POST['c1'])) {
 
         return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
     }
-
+    function rupiah($angka)
+    {
+        $hasil = 'Rp ' . number_format($angka, 2, ",", ".");
+        return $hasil;
+    }
     ?>
 </script>

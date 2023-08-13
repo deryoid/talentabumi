@@ -1,7 +1,7 @@
 <?php
 function base_url($url = null)
 {
-	$base_url = "http://localhost:8888/talentabumi";
+	$base_url = "http://localhost/talentabumi";
 	if ($url != null) {
 		return $base_url . "/" . $url;
 	} else {

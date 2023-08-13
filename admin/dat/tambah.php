@@ -179,13 +179,13 @@ include '../../templates/head.php';
         NULL,
         '$jenis_aktiva',
         '$nama_aktiva',
-        '$jumlah',
-        '$satuan',
         '$no_register',
         '$lokasi1',
         '$lokasi2',
         '$tanggal_perolehan',
-        '$nilai_perolehan'
+        '$nilai_perolehan',
+        '$jumlah',
+        '$satuan'
         )");
         // var_dump($submit, $koneksi->error);
         // die();

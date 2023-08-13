@@ -33,12 +33,12 @@ $row = $data->fetch_array();
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Daftar Aktiva Tetap</h1>
+                            <h1 class="m-0 text-dark">Rekap Harian</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Beranda</a></li>
-                                <li class="breadcrumb-item active">Daftar Aktiva Tetap</li>
+                                <li class="breadcrumb-item active">Rekap Harian</li>
                                 <li class="breadcrumb-item active">Edit Data</li>
                             </ol>
                         </div><!-- /.col -->

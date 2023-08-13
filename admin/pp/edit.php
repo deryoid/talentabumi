@@ -95,6 +95,12 @@ $row = $data->fetch_array();
                                                 <input type="text" class="form-control" name="satuan" value="<?= $row['satuan'] ?>">
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Harga</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="jumlah_pp" value="<?= $row['jumlah_pp'] ?>">
+                                            </div>
+                                        </div>
 
                                     </div>
                                     <!-- /.card-body -->
@@ -140,6 +146,7 @@ $row = $data->fetch_array();
         $keterangan = $_POST['keterangan'];
         $jumlah = $_POST['jumlah'];
         $satuan = $_POST['satuan'];
+        $jumlah_pp = $_POST['jumlah_pp'];
 
 
         $submit = $koneksi->query("UPDATE pp SET 
@@ -147,7 +154,8 @@ $row = $data->fetch_array();
         no_pp = '$no_pp',
         keterangan = '$keterangan',
         jumlah = '$jumlah',
-        satuan = '$satuan'
+        satuan = '$satuan',
+        jumlah_pp = '$jumlah_pp'
         WHERE 
         id_pp = '$id'
         ");

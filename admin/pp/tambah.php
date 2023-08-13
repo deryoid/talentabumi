@@ -90,6 +90,12 @@ include '../../templates/head.php';
                                                 <input type="text" class="form-control" name="satuan" required="">
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Harga</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="jumlah_pp" required="">
+                                            </div>
+                                        </div>
                                     </div>
                                     <!-- /.card-body -->
 
@@ -135,6 +141,7 @@ include '../../templates/head.php';
         $keterangan = $_POST['keterangan'];
         $jumlah = $_POST['jumlah'];
         $satuan = $_POST['satuan'];
+        $jumlah_pp = $_POST['jumlah_pp'];
 
         $submit = $koneksi->query("INSERT INTO pp VALUES (
         NULL,
@@ -142,7 +149,8 @@ include '../../templates/head.php';
         '$no_pp',
         '$keterangan',
         '$jumlah',
-        '$satuan'
+        '$satuan',
+        '$jumlah_pp'
         )");
         // var_dump($submit, $koneksi->error);
         // die();

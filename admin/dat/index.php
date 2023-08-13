@@ -52,6 +52,7 @@ include '../../templates/head.php';
                                 <div class="card-header">
                                     <a href="tambah" class="btn bg-primary"><i class="fa fa-plus-circle"> Tambah Data</i></a>
                                     <a href="#" data-toggle="modal" data-target="#dat" class="btn bg-info"><i class="fa fa-print"> Cetak</i></a>
+                                    <!-- <a href="akumulasi" target="blank" class="btn bg-warning"><i class="fa fa-chart-area"> Akumulasi</i></a> -->
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -86,7 +87,7 @@ include '../../templates/head.php';
                                             </thead>
                                             <?php
                                             $no = 1;
-                                            $data = $koneksi->query("SELECT * FROM aktiva_tetap ORDER BY id_aktiva ASC");
+                                            $data = $koneksi->query("SELECT * FROM aktiva_tetap ORDER BY id_aktiva DESC");
                                             while ($row = $data->fetch_array()) {
                                             ?>
                                                 <tbody style="background-color: white">

@@ -11,9 +11,9 @@ $message_text = "Lokasi : " . $row['lokasi_rh'] .
     ", Nomor Aset : " . $row['nomor_inventaris'] .
     ", Status : " . $row['status'];
 
-$secret_token = "6542903325:AAHSRrbR-9qp-gJHlPPHjH3RiQd1JI0lNdY";
+$secret_token = "6374888624:AAGvl-GohCBV2tBc_wN7UqWXAZxUjEk5sCw";
 
-$url = "https://api.telegram.org/bot" . $secret_token . "/sendMessage?parse_mode=markdown&chat_id=2013222083";
+$url = "https://api.telegram.org/bot" . $secret_token . "/sendMessage?parse_mode=markdown&chat_id=-998500032";
 $url = $url . "&text=" . urlencode($message_text);
 $ch = curl_init();
 $optArray = array(
